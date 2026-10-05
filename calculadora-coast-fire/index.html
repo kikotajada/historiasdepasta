@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calculadora Coast FIRE · Historias de Pasta</title>
+<meta name="description" content="Calculadora Coast FIRE gratis: descubre con cuánto invertido puedes dejar de ahorrar y aun así jubilarte a tiempo. En euros de hoy.">
+<link rel="canonical" href="https://historiasdepasta.es/calculadora-coast-fire/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Historias de Pasta">
+<meta property="og:locale" content="es_ES">
+<meta property="og:title" content="Calculadora Coast FIRE · Historias de Pasta">
+<meta property="og:description" content="Calculadora Coast FIRE gratis: descubre con cuánto invertido puedes dejar de ahorrar y aun así jubilarte a tiempo. En euros de hoy.">
+<meta property="og:url" content="https://historiasdepasta.es/calculadora-coast-fire/">
+<meta property="og:image" content="https://historiasdepasta.es/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#FAF8F3">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="preload" href="../assets/brand/fonts/anton.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/brand/fonts/montserrat-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/site.css">
+<style>
+/* Calculator — on top of css/site.css. Ink for the savings path, mustard for the coast line,
+   gain/loss only where money goes up or down. */
+.calc-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px 32px;align-items:end;padding-top:clamp(32px,6vw,64px);margin-bottom:28px}
+.calc-head .figure img{height:clamp(150px,18vw,210px);width:auto}
+.calc-head h1{margin-bottom:14px}
+.head-row{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+@media (max-width:720px){.calc-head{grid-template-columns:minmax(0,1fr)}.calc-head .figure{display:none}}
+.lang{display:inline-flex;border:2px solid var(--ink);border-radius:99px;padding:2px;background:var(--white)}
+.lang button{font:800 .72rem/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;border:0;background:transparent;color:var(--grey-dark);padding:7px 13px;border-radius:99px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--white)}
+
+.grid{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:28px;align-items:start}
+@media (max-width:860px){.grid{grid-template-columns:minmax(0,1fr)}}
+.rail{padding:22px;display:flex;flex-direction:column;gap:18px}
+.group-label{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--grey-dark);font-weight:800;margin-top:4px;padding-top:12px;border-top:2px solid var(--grey-light)}
+.group-label.first{border-top:0;padding-top:0}
+.field{display:flex;flex-direction:column;gap:6px}
+.field-top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.field label{font-weight:700;font-size:.92rem;line-height:1.3}
+.field .hint{font-size:.8rem;color:var(--grey-dark);line-height:1.45}
+.numbox{display:flex;align-items:center;border:2px solid var(--ink);border-radius:10px;background:var(--paper);overflow:hidden;width:140px;flex-shrink:0}
+.numbox span{font-weight:700;font-size:.78rem;color:var(--grey-dark);padding:0 9px;white-space:nowrap}
+.numbox input{border:0;background:transparent;color:var(--ink);font:700 .95rem var(--sans);font-variant-numeric:tabular-nums;padding:7px 9px;width:100%;text-align:right;min-width:0}
+.numbox input:focus{outline:none}
+.numbox:focus-within{box-shadow:0 0 0 3px var(--mustard)}
+input[type=range]{width:100%;accent-color:var(--ink)}
+select{font:700 .9rem var(--sans);color:var(--ink);background:var(--paper);border:2px solid var(--ink);border-radius:10px;padding:6px 8px}
+
+.main{display:flex;flex-direction:column;gap:24px;min-width:0}
+.verdict{padding:22px 24px;display:flex;flex-direction:column;gap:8px}
+.verdict-pill{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;border:2px solid var(--ink);border-radius:99px;padding:.35em .9em;background:var(--white)}
+.verdict-pill::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--mustard);border:1.5px solid var(--ink)}
+.verdict.done .verdict-pill::before{background:var(--gain)}
+.verdict.no .verdict-pill::before{background:var(--loss)}
+.verdict h2{font-size:clamp(1.7rem,3.6vw,2.5rem);margin:2px 0 0}
+.verdict p{margin:0;max-width:64ch}
+
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+@media (max-width:640px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.stat{background:var(--white);border:2px solid var(--ink);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.stat .k{font-size:.72rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--grey-dark)}
+.stat .v{font-family:var(--display);font-size:1.6rem;line-height:1.15;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.stat .s{font-size:.75rem;color:var(--grey-dark);line-height:1.4}
+
+.chart-card{padding:18px 18px 10px;min-width:0}
+.chart-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px 16px;margin-bottom:8px}
+.chart-head h3 small{font-weight:500;font-size:.8rem;color:var(--grey-dark)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.78rem;font-weight:700;color:var(--grey-dark)}
+.legend i{display:inline-block;width:16px;height:4px;border-radius:2px;vertical-align:middle;margin-right:6px}
+.chart{width:100%;overflow-x:auto}
+.chart svg{display:block;width:100%;height:auto;min-width:520px}
+.chart svg text{font-family:var(--sans);font-weight:700;font-size:11px;fill:var(--grey-dark);font-variant-numeric:tabular-nums}
+
+.notes{font-size:.88rem;color:var(--grey-dark);max-width:75ch;display:flex;flex-direction:column;gap:10px}
+.notes b{color:var(--ink);font-weight:800}
+</style>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../" aria-label="Historias de Pasta, inicio">
+      <img src="../img/logo.webp" alt="" width="46" height="46">
+      <span>Historias de <span class="mark">Pasta</span></span>
+    </a>
+    <nav class="nav" aria-label="Principal">
+      <a href="../episodios/">Episodios</a>
+      <a href="../calculadora-coast-fire/" aria-current="page">Calculadora</a>
+      <a href="../sobre/">Sobre el canal</a>
+      <a class="btn btn--small" href="https://www.youtube.com/@historias_pasta?sub_confirmation=1" rel="noopener">Suscríbete</a>
+    </nav>
+  </div>
+</header>
+<main id="contenido">
+<div class="wrap">
+  <header class="calc-head">
+    <div>
+      <div class="head-row">
+        <p class="eyebrow" style="margin:0" data-i18n="eyebrow">Herramienta</p>
+        <div class="lang" role="group" aria-label="Idioma / Language">
+          <button type="button" id="lang_es" aria-pressed="true">ES</button>
+          <button type="button" id="lang_en" aria-pressed="false">EN</button>
+        </div>
+      </div>
+      <h1 data-i18n="title">Calculadora <span class="mark">Coast FIRE</span></h1>
+      <p class="lead muted" data-i18n="intro"></p>
+    </div>
+    <div class="figure"><img src="../img/personajes/dani-pensando.webp" alt="" width="185" height="650"></div>
+  </header>
+
+  <div class="grid">
+    <form class="card rail" id="form" autocomplete="off">
+      <div class="field-top">
+        <div class="group-label first" data-i18n="g_ccy">Moneda</div>
+        <select id="ccy" aria-label="Moneda">
+          <option value="EUR" selected>EUR</option><option value="CHF">CHF</option><option value="USD">USD</option><option value="GBP">GBP</option>
+        </select>
+      </div>
+
+      <div class="group-label" data-i18n="g_you">Tú</div>
+      <div class="field"><div class="field-top"><label for="age" data-i18n="l_age">Edad actual</label><div class="numbox"><input id="age" type="number" inputmode="numeric" min="16" max="80" value="32"><span data-i18n="u_yrs">años</span></div></div>
+        <input type="range" id="age_r" min="16" max="80" value="32" aria-label="Edad actual"></div>
+      <div class="field"><div class="field-top"><label for="ret" data-i18n="l_ret">Edad de jubilación</label><div class="numbox"><input id="ret" type="number" inputmode="numeric" min="30" max="80" value="60"><span data-i18n="u_yrs">años</span></div></div>
+        <input type="range" id="ret_r" min="30" max="80" value="60" aria-label="Edad de jubilación"></div>
+
+      <div class="group-label" data-i18n="g_money">Dinero</div>
+      <div class="field"><div class="field-top"><label for="bal" data-i18n="l_bal">Invertido hoy</label><div class="numbox"><input id="bal" type="number" inputmode="numeric" min="0" step="1000" value="120000"><span class="cc">€</span></div></div></div>
+      <div class="field"><div class="field-top"><label for="contrib" data-i18n="l_contrib">Ahorro mensual</label><div class="numbox"><input id="contrib" type="number" inputmode="numeric" min="0" step="100" value="2000"><span class="cc">€</span></div></div>
+        <span class="hint" data-i18n="h_contrib"></span></div>
+      <div class="field"><div class="field-top"><label for="spend" data-i18n="l_spend">Gasto anual en la jubilación</label><div class="numbox"><input id="spend" type="number" inputmode="numeric" min="0" step="1000" value="60000"><span class="cc">€</span></div></div>
+        <span class="hint" data-i18n="h_spend"></span></div>
+
+      <div class="group-label" data-i18n="g_assump">Supuestos</div>
+      <div class="field"><div class="field-top"><label for="rr" data-i18n="l_rr">Rentabilidad de la inversión</label><div class="numbox"><input id="rr" type="number" inputmode="decimal" min="0" max="15" step="0.1" value="7"><span data-i18n="u_pa">%/año</span></div></div>
+        <input type="range" id="rr_r" min="0" max="15" step="0.1" value="7" aria-label="Rentabilidad de la inversión">
+        <span class="hint" data-i18n="h_rr"></span></div>
+      <div class="field"><div class="field-top"><label for="inf" data-i18n="l_inf">Inflación</label><div class="numbox"><input id="inf" type="number" inputmode="decimal" min="0" max="10" step="0.1" value="1.5"><span data-i18n="u_pa">%/año</span></div></div>
+        <input type="range" id="inf_r" min="0" max="10" step="0.1" value="1.5" aria-label="Inflación">
+        <span class="hint" id="realhint"></span></div>
+      <div class="field"><div class="field-top"><label for="swr" data-i18n="l_swr">Tasa de retirada</label><div class="numbox"><input id="swr" type="number" inputmode="decimal" min="2" max="6" step="0.1" value="3.5"><span>%</span></div></div>
+        <input type="range" id="swr_r" min="2" max="6" step="0.1" value="3.5" aria-label="Tasa de retirada"></div>
+    </form>
+
+    <section class="main" aria-live="polite">
+      <div class="card verdict" id="verdict">
+        <span class="verdict-pill" id="pill"></span>
+        <h2 id="headline">—</h2>
+        <p id="sub"></p>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><span class="k" data-i18n="k_fire">Número FIRE</span><span class="v" id="s_fire">—</span><span class="s" id="s_fire_s"></span></div>
+        <div class="stat"><span class="k" data-i18n="k_coast">Número Coast hoy</span><span class="v" id="s_coast">—</span><span class="s" data-i18n="s_coast"></span></div>
+        <div class="stat"><span class="k" data-i18n="k_age">Edad Coast</span><span class="v" id="s_age">—</span><span class="s" data-i18n="s_age"></span></div>
+        <div class="stat"><span class="k" data-i18n="k_stop">Si dejas de ahorrar hoy</span><span class="v" id="s_stop">—</span><span class="s" id="s_stop_s"></span></div>
+      </div>
+
+      <div class="card chart-card">
+        <div class="chart-head">
+          <h3><span data-i18n="c_title">Trayectoria hasta la jubilación</span> <small data-i18n="c_sub">en dinero de hoy</small></h3>
+          <div class="legend">
+            <span><i style="background:var(--ink)"></i><span data-i18n="lg_save"></span></span>
+            <span><i style="background:var(--grey)"></i><span data-i18n="lg_stop"></span></span>
+            <span><i style="background:var(--mustard)"></i><span data-i18n="lg_line"></span></span>
+          </div>
+        </div>
+        <div class="chart" id="chart"></div>
+      </div>
+
+      <div class="notes">
+        <span data-i18n="n_how"></span>
+        <span data-i18n="n_money"></span>
+        <span data-i18n="n_mind"></span>
+      </div>
+    </section>
+  </div>
+</div>
+</main>
+
+<script>
+(function(){
+  const NB=" ";
+  const T={
+  es:{
+    eyebrow:"Herramienta",
+    title:'Calculadora <span class="mark">Coast FIRE</span>',doc:"Calculadora Coast FIRE",
+    intro:"¿Con cuánto invertido puedes dejar de ahorrar y que el interés compuesto haga el resto hasta tu jubilación? Ese número es tu Coast FIRE. Mete tus datos: la rentabilidad y la inflación van por separado y todo sale en euros de hoy.",
+    g_ccy:"Moneda",g_you:"Tú",g_money:"Dinero",g_assump:"Supuestos",
+    l_age:"Edad actual",l_ret:"Edad de jubilación",u_yrs:"años",u_pa:"%/año",
+    l_bal:"Invertido hoy",l_contrib:"Ahorro mensual",h_contrib:"Sirve para calcular cuándo alcanzas el Coast.",
+    l_spend:"Gasto anual en la jubilación",
+    h_spend:"A <b>precios de hoy</b>: lo que cuesta ese estilo de vida ahora. No le sumes la inflación, de eso se encarga el campo de inflación. Descuenta la pensión que esperes cobrar (pública, de empresa, etc.).",
+    l_rr:"Rentabilidad de la inversión",h_rr:"Nominal, antes de inflación.",l_inf:"Inflación",l_swr:"Tasa de retirada",
+    real:r=>"Rentabilidad real: "+r+NB+"%/año (la que de verdad se capitaliza)",
+    k_fire:"Número FIRE",k_coast:"Número Coast hoy",s_coast:"lo que necesitas ahora para dejar de aportar",k_age:"Edad Coast",s_age:"con tu ahorro mensual",k_stop:"Si dejas de ahorrar hoy",
+    fire_s:(v,y)=>"≈ "+v+" en dinero de "+y,stop_s:(p,a)=>p+NB+"% del número FIRE a los "+a,now:"Ya",
+    c_title:"Trayectoria hasta la jubilación",c_sub:"en dinero de hoy",
+    lg_save:"Ahorrando hasta el Coast, luego sin aportar",lg_stop:"Dejar de ahorrar hoy",lg_line:"Línea Coast",
+    coastAt:a=>"Coast a los "+a,
+    n_how:"<b>Cómo funciona.</b> Rentabilidad real = (1 + rentabilidad) ÷ (1 + inflación) − 1. Número Coast = número FIRE ÷ (1 + rentabilidad real)<sup>años hasta la jubilación</sup>. La línea Coast sube cada año porque quedan menos años para capitalizar. Cuando tu trayectoria de ahorro la cruza, puedes dejar de aportar y aun así llegar a tu número FIRE al jubilarte.",
+    n_money:"<b>Dinero de hoy vs. dinero futuro.</b> Introduce el gasto a precios de hoy. La calculadora capitaliza a la rentabilidad real, así que todas las cifras y el gráfico están en dinero de hoy. La tarjeta FIRE también muestra el mismo objetivo a precios del año de jubilación, como referencia. Si metes un gasto ya inflado, contarías la inflación dos veces.",
+    n_mind:"<b>Ten en cuenta.</b> Las rentabilidades son medias suavizadas; los mercados de verdad no lo son. Una tasa de retirada del 3–3,5"+NB+"% es una elección conservadora habitual para jubilaciones anticipadas. No tiene en cuenta impuestos. Es una herramienta educativa, no asesoramiento financiero.",
+    p_done:"Coast alcanzado",h_done:"Ya has alcanzado el Coast FIRE.",
+    d_done:(b,f,a,x)=>"Tus "+b+" crecen hasta "+f+" a los "+a+" años sin ahorrar más, es decir, "+x+" más de lo que necesitas. Todo lo que ahorres a partir de ahora adelanta tu salida.",
+    p_way:"En camino",h_way:a=>"Puedes dejar de ahorrar a los "+a+" años.",
+    d_way:(g,c,t,a)=>"Te faltan "+g+" para alcanzar el Coast hoy. Ahorrando "+c+" al mes cierras la brecha en unos "+t+". Después, solo tienes que cubrir tus gastos hasta los "+a+".",
+    months:n=>n+(n===1?" mes":" meses"),years:n=>n+" años",
+    p_no:"No alcanzado",h_no:a=>"A este ritmo no llegas al Coast antes de los "+a+".",
+    d_no:(p,f)=>"Acabarías con "+p+" frente a un objetivo de "+f+". Prueba a ahorrar más, jubilarte más tarde o reducir el gasto previsto."
+  },
+  en:{
+    eyebrow:"Tool",
+    title:'Coast <span class="mark">FIRE</span> Calculator',doc:"Coast FIRE Calculator",
+    intro:"Find the balance where you can stop saving and let compounding carry you to retirement. Enter your expected return and inflation separately; results are shown in today's money, with future-money figures alongside.",
+    g_ccy:"Currency",g_you:"You",g_money:"Money",g_assump:"Assumptions",
+    l_age:"Current age",l_ret:"Retirement age",u_yrs:"yrs",u_pa:"%/yr",
+    l_bal:"Invested today",l_contrib:"Monthly saving",h_contrib:"Used to find when you hit Coast.",
+    l_spend:"Annual spending in retirement",
+    h_spend:"In <b>today's prices</b>, what this lifestyle costs now. Don't inflate it yourself; the inflation input handles that. Net of any pension income you expect (state, workplace, etc.).",
+    l_rr:"Investment return",h_rr:"Nominal, before inflation.",l_inf:"Inflation",l_swr:"Withdrawal rate",
+    real:r=>"Real return: "+r+"%/yr (what actually compounds)",
+    k_fire:"FIRE number",k_coast:"Coast number today",s_coast:"needed now to coast",k_age:"Coast age",s_age:"with monthly saving",k_stop:"If you stop today",
+    fire_s:(v,y)=>"≈ "+v+" in "+y+" money",stop_s:(p,a)=>p+"% of FIRE number at "+a,now:"Now",
+    c_title:"Trajectory to retirement",c_sub:"in today's money",
+    lg_save:"Saving until Coast, then coasting",lg_stop:"Stop saving today",lg_line:"Coast line",
+    coastAt:a=>"Coast @ "+a,
+    n_how:"<b>How it works.</b> Real return = (1 + return) ÷ (1 + inflation) − 1. Coast number = FIRE number ÷ (1 + real return)<sup>years to retirement</sup>. The coast line rises each year because fewer years remain to compound. Where your savings path crosses it, you can stop contributing and still reach your FIRE number at retirement.",
+    n_money:"<b>Today's money vs. future money.</b> Enter spending at today's prices. The calculator compounds at the real return, so every figure and the chart stay in today's money. The FIRE tile also shows the same target in retirement-year prices for reference. Entering an already-inflated spending figure would count inflation twice.",
+    n_mind:"<b>Keep in mind.</b> Returns are smooth averages; real markets are not. A 3–3.5% withdrawal rate is a common conservative choice for early retirees. Taxes are not included. This is an educational tool, not financial advice.",
+    p_done:"Coasted",h_done:"You've already reached Coast FIRE.",
+    d_done:(b,f,a,x)=>"Your "+b+" grows to "+f+" by age "+a+" with no further saving, which is "+x+" more than you need. Any saving from here buys an earlier exit.",
+    p_way:"On the way",h_way:a=>"You can stop saving at age "+a+".",
+    d_way:(g,c,t,a)=>"You're "+g+" short of coasting today. Saving "+c+" a month closes the gap in about "+t+"; after that, cover only your living costs until "+a+".",
+    months:n=>n+(n===1?" month":" months"),years:n=>n+" years",
+    p_no:"Not reached",h_no:a=>"At this pace you don't reach Coast before "+a+".",
+    d_no:(p,f)=>"You'd end up with "+p+" against a target of "+f+". Try saving more, retiring later, or lowering planned spending."
+  }};
+  const $ = id => document.getElementById(id);
+  let lang="es";
+  try{const saved=localStorage.getItem("hdp_lang"); if(saved==="en"||saved==="es") lang=saved}catch(e){}
+  const t=()=>T[lang];
+  const dec=(v,d)=>{const s=v.toFixed(d);return lang==="es"?s.replace(".",","):s};
+
+  function setLang(l){
+    lang=l; document.documentElement.lang=l;
+    try{localStorage.setItem("hdp_lang",l)}catch(e){}
+    $("lang_en").setAttribute("aria-pressed",l==="en"); $("lang_es").setAttribute("aria-pressed",l==="es");
+    document.querySelectorAll("[data-i18n]").forEach(el=>{const v=t()[el.dataset.i18n]; if(typeof v==="string") el.innerHTML=v});
+    document.title=t().doc+" · Historias de Pasta";
+    calc();
+  }
+  $("lang_en").addEventListener("click",()=>setLang("en"));
+  $("lang_es").addEventListener("click",()=>setLang("es"));
+
+  const pairs = [["age","age_r"],["ret","ret_r"],["rr","rr_r"],["inf","inf_r"],["swr","swr_r"]];
+  pairs.forEach(([n,r])=>{
+    $(r).addEventListener("input",()=>{$(n).value=$(r).value;calc()});
+    $(n).addEventListener("input",()=>{$(r).value=$(n).value;calc()});
+  });
+  ["bal","contrib","spend"].forEach(id=>$(id).addEventListener("input",calc));
+  const SYM={EUR:"€",CHF:"CHF",USD:"$",GBP:"£"};
+  $("ccy").addEventListener("change",()=>{document.querySelectorAll(".cc").forEach(e=>e.textContent=SYM[$("ccy").value]);calc()});
+  $("form").addEventListener("submit",e=>e.preventDefault());
+
+  // Grouping follows the currency's home convention (100.000 €, CHF 1'250'000, $1,250,000)
+  function fmt(v){
+    const c=$("ccy").value, n=Math.round(v);
+    const loc={CHF:"de-CH",EUR:"es-ES",USD:"en-US",GBP:"en-GB"}[c];
+    const s=n.toLocaleString(loc,{useGrouping:"always"});
+    return c==="EUR" ? s+NB+"€" : c==="CHF" ? "CHF"+NB+s : SYM[c]+s;
+  }
+  function short(v){
+    const a=Math.abs(v);
+    if(a>=1e6) return dec(v/1e6,a>=1e7?0:1)+"M";
+    if(a>=1e3) return Math.round(v/1e3)+"k";
+    return String(Math.round(v));
+  }
+  const num=id=>{const v=parseFloat($(id).value);return isFinite(v)?v:0};
+
+  function calc(){
+    const L=t();
+    const age=num("age"), ret=Math.max(num("ret"),age+1), bal=Math.max(0,num("bal")),
+          c=Math.max(0,num("contrib")), spend=Math.max(0,num("spend")),
+          nom=num("rr")/100, inf=num("inf")/100, r=(1+nom)/(1+inf)-1, swr=Math.max(0.1,num("swr"))/100;
+    const Y=ret-age, fire=spend/swr, g=1+r, m=Math.pow(g,1/12)-1;
+    const coastAt = tt => fire/Math.pow(g, Y-tt);
+    const coastNow = coastAt(0);
+
+    const months=Math.round(Y*12);
+    let p=bal, coastMonth = bal>=coastNow ? 0 : null;
+    const save=[{t:0,v:bal}], stop=[], line=[];
+    for(let i=1;i<=months;i++){
+      p = p*(1+m) + (coastMonth===null ? c : 0);
+      if(coastMonth===null && p>=coastAt(i/12)) coastMonth=i;
+      if(i%12===0||i===months) save.push({t:i/12,v:p});
+    }
+    for(let tt=0;tt<=Y;tt+=Y>40?1:0.5){stop.push({t:tt,v:bal*Math.pow(g,tt)});line.push({t:tt,v:coastAt(tt)})}
+    stop.push({t:Y,v:bal*Math.pow(g,Y)}); line.push({t:Y,v:fire});
+    const stopFinal=bal*Math.pow(g,Y);
+
+    $("realhint").textContent=L.real(dec(r*100,2));
+    $("s_fire").textContent=fmt(fire);
+    $("s_fire_s").textContent=L.fire_s(fmt(fire*Math.pow(1+inf,Y)), new Date().getFullYear()+Math.round(Y));
+    $("s_coast").textContent=fmt(coastNow);
+    $("s_stop").textContent=fmt(stopFinal);
+    $("s_stop_s").textContent=L.stop_s(Math.round(stopFinal/fire*100),ret);
+
+    const v=$("verdict");
+    v.classList.remove("done","way","no");
+    if(coastMonth===0){
+      v.classList.add("done");
+      $("pill").textContent=L.p_done; $("headline").textContent=L.h_done;
+      $("sub").textContent=L.d_done(fmt(bal),fmt(stopFinal),ret,fmt(stopFinal-fire));
+      $("s_age").textContent=L.now;
+    } else if(coastMonth!==null){
+      v.classList.add("way");
+      const ca=age+coastMonth/12, yrs=coastMonth/12;
+      $("pill").textContent=L.p_way; $("headline").textContent=L.h_way(dec(ca,1));
+      $("sub").textContent=L.d_way(fmt(coastNow-bal),fmt(c),yrs<1?L.months(Math.max(1,coastMonth)):L.years(dec(yrs,1)),ret);
+      $("s_age").textContent=dec(ca,1);
+    } else {
+      v.classList.add("no");
+      $("pill").textContent=L.p_no; $("headline").textContent=L.h_no(ret);
+      $("sub").textContent=L.d_no(fmt(p),fmt(fire));
+      $("s_age").textContent="—";
+    }
+    draw(save,stop,line,Y,age,fire,coastMonth,r);
+  }
+
+  function draw(save,stop,line,Y,age,fire,coastMonth,r){
+    const W=720,H=320,L=58,R=18,Tp=16,B=34, iw=W-L-R, ih=H-Tp-B;
+    const maxV=Math.max(fire, ...save.map(d=>d.v), ...stop.map(d=>d.v))*1.08;
+    const raw=maxV/5, mag=Math.pow(10,Math.floor(Math.log10(raw||1))), step=[1,2,2.5,5,10].map(s=>s*mag).find(s=>s>=raw);
+    const top=Math.ceil(maxV/step)*step;
+    const x=tt=>L+tt/Y*iw, y=v=>Tp+ih-(v/top)*ih;
+    const path=a=>a.map((d,i)=>(i?"L":"M")+x(d.t).toFixed(1)+" "+y(d.v).toFixed(1)).join("");
+    let g="";
+    for(let v=0;v<=top+1e-6;v+=step){
+      g+=`<line x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}" stroke="var(--grey-light)" stroke-width="1"/>`;
+      g+=`<text x="${L-8}" y="${y(v)+4}" text-anchor="end">${short(v)}</text>`;
+    }
+    const xs=Y<=12?1:Y<=30?5:10;
+    for(let tt=0;tt<=Y;tt+=xs){g+=`<text x="${x(tt)}" y="${H-12}" text-anchor="middle">${age+tt}</text>`}
+    const area=path(save)+`L${x(Y)} ${y(0)}L${x(0)} ${y(0)}Z`;
+    let marker="";
+    if(coastMonth!==null){
+      const ct=coastMonth/12, cv=fire/Math.pow(1+r,Y-ct);
+      marker=`<line x1="${x(ct)}" x2="${x(ct)}" y1="${Tp}" y2="${y(0)}" stroke="var(--ink)" stroke-dasharray="3 4" opacity=".5"/>
+        <circle cx="${x(ct)}" cy="${y(cv)}" r="6.5" fill="var(--mustard)" stroke="var(--ink)" stroke-width="2.5"/>
+        <text x="${Math.min(x(ct)+8,W-R-90)}" y="${Tp+12}" style="fill:var(--ink)">${t().coastAt(dec(age+ct,1))}</text>`;
+    }
+    const last=save[save.length-1];
+    $("chart").innerHTML=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${t().c_title}">
+      ${g}
+      <line x1="${L}" x2="${W-R}" y1="${y(fire)}" y2="${y(fire)}" stroke="var(--ink)" stroke-width="1.5" stroke-dasharray="2 4"/>
+      <text x="${W-R}" y="${y(fire)-6}" text-anchor="end" style="fill:var(--ink)">FIRE ${short(fire)}</text>
+      <path d="${area}" fill="var(--ink)" opacity=".05"/>
+      <path d="${path(stop)}" fill="none" stroke="var(--grey)" stroke-width="2.5" stroke-dasharray="6 5"/>
+      <path d="${path(line)}" fill="none" stroke="var(--mustard)" stroke-width="3.5"/>
+      <path d="${path(save)}" fill="none" stroke="var(--ink)" stroke-width="3" stroke-linejoin="round"/>
+      <circle cx="${x(last.t)}" cy="${y(last.v)}" r="4.5" fill="var(--ink)"/>
+      ${marker}
+    </svg>`;
+  }
+  setLang(lang);
+})();
+</script>
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <a class="brand" href="../">
+        <img src="../img/logo.webp" alt="" width="46" height="46" loading="lazy">
+        <span>Historias de <span class="mark">Pasta</span></span>
+      </a>
+      <p class="muted" style="margin:0">Finanzas personales para España, contadas como historias.<br>Nuevo vídeo cada domingo a las 20:00.</p>
+    </div>
+    <nav aria-label="Pie de página">
+      <a href="../episodios/">Episodios</a>
+      <a href="https://www.youtube.com/@historias_pasta" rel="noopener">YouTube</a>
+      <a href="../calculadora-coast-fire/">Calculadora Coast FIRE</a>
+      <a href="../aviso-legal/">Aviso legal</a>
+      <a href="../sobre/">Sobre el canal</a>
+      <a href="../privacidad/">Privacidad</a>
+    </nav>
+    <p class="disclaimer">Contenido educativo y de entretenimiento. No es asesoramiento financiero. Las rentabilidades pasadas no garantizan rentabilidades futuras e invertir implica riesgo de pérdida.</p>
+    <p class="copy-line">© 2026 Historias de Pasta · @historias_pasta</p>
+  </div>
+</footer>
+</body>
+</html>

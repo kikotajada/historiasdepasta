@@ -8,7 +8,7 @@ Brand files for historiasdepasta.es. **Read `brand.md` first.** It has the colou
 | `characters/` | Transparent cut-outs of Dani, Lucía, Carmen and Paco, plus one group image |
 | `thumbnails/` | Episode thumbnails, and Short covers in `shorts/` |
 | `banner/` | YouTube channel banner |
-| `fonts/` | Anton and Montserrat web fonts (woff2) |
+| `fonts/` | Anton and Montserrat web fonts (woff2). `montserrat-500.woff2` is the Google Fonts Latin subset, added for body text |
 | `icons/` | Subscribe badge |
 
 Every file is an original export, never redrawn. Don't create, redraw or AI-generate logos or characters. If something is missing, leave a placeholder and ask.
