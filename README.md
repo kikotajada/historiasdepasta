@@ -6,8 +6,8 @@ Website for the YouTube channel **Historias de Pasta**. Plain static HTML and CS
 
 | Path | What it is |
 |---|---|
-| `index.html` | Home: hero, latest episode, Shorts, calculator teaser, characters |
-| `episodios/` | All episodes and Shorts |
+| `index.html` | Home: hero, latest video, Shorts, calculator teaser, characters |
+| `videos/` | All videos and Shorts |
 | `calculadora-coast-fire/` | Coast FIRE calculator (Spanish by default, English toggle) |
 | `sobre/` | About the channel and the characters |
 | `aviso-legal/`, `privacidad/` | Legal pages |
@@ -20,16 +20,15 @@ The header and footer are repeated in every page. If you change one, change it e
 
 ## Still to fill in
 
-Search the repo for `TODO` and `PENDIENTE`:
+Search the repo for `PENDIENTE`:
 
-- YouTube links for episodes 1 and 2 (`index.html`, `episodios/index.html`). They point to the channel until then.
 - Owner name, NIF, address and email in `aviso-legal/index.html` and the email in `privacidad/index.html` (required by the LSSI-CE).
 
-## Adding an episode or Short
+## Adding a video or Short
 
-1. Export the thumbnail at 1280 px wide as WebP into `img/episodios/` (Short covers: 540 px wide into `img/shorts/`). For example: `convert original.png -resize 1280x -quality 80 img/episodios/episodio-3.webp`.
-2. Copy an existing card in `episodios/index.html` and change the image, number, title, description and link.
-3. On the home page, move the new episode into the big "Último episodio" card.
+1. Export the thumbnail at 1280 px wide as WebP into `img/videos/` (Short covers: 540 px wide into `img/shorts/`). For example: `convert original.png -resize 1280x -quality 80 img/videos/eliges-ser-rico.webp`.
+2. Copy an existing card in `videos/index.html` and change the image, title, description and link.
+3. On the home page, move the new video into the big "Último vídeo" card.
 
 ## Domain
 
