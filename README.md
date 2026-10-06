@@ -43,3 +43,7 @@ DNS at the registrar:
 | A | @ | 185.199.110.153 |
 | A | @ | 185.199.111.153 |
 | CNAME | www | kikotajada.github.io |
+
+## If a deploy gets stuck
+
+Pages deploys show up in the Actions tab as "pages build and deployment" and take 1–2 minutes. If one sits in "queued" for much longer (usually during a GitHub Actions incident, see githubstatus.com), start a fresh one: Settings → Pages, set the branch to None and Save, then back to `main` / root and Save. Merging any change into `main` also starts a new deploy.
