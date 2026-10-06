@@ -20,9 +20,8 @@ The header and footer are repeated in every page. If you change one, change it e
 
 ## Still to fill in
 
-Search the repo for `PENDIENTE`:
+Nothing pending. The contact email (kikotajada@gmail.com) appears in `aviso-legal/` and `privacidad/`; update both if you switch to an @historiasdepasta.es address.
 
-- Owner name, NIF, address and email in `aviso-legal/index.html` and the email in `privacidad/index.html` (required by the LSSI-CE).
 
 ## Adding a video or Short
 

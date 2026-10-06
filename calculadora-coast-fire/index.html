@@ -76,6 +76,14 @@ select{font:700 .9rem var(--sans);color:var(--ink);background:var(--paper);borde
 
 .notes{font-size:.88rem;color:var(--grey-dark);max-width:75ch;display:flex;flex-direction:column;gap:10px}
 .notes b{color:var(--ink);font-weight:800}
+.explain{margin:0 0 32px}
+.explain h2{font-size:clamp(1.6rem,3vw,2.1rem);margin-bottom:10px}
+.explain-lead{max-width:70ch;color:var(--grey-dark);margin-bottom:18px}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+@media (max-width:760px){.steps{grid-template-columns:minmax(0,1fr)}}
+.steps li{padding:18px 20px;display:flex;flex-direction:column;gap:6px;box-shadow:0 4px 0 var(--ink)}
+.steps p{margin:0;font-size:.92rem;color:var(--grey-dark)}
+.step-n{width:30px;height:30px;border-radius:50%;background:var(--mustard);border:2px solid var(--ink);display:grid;place-items:center;font-family:var(--display);font-size:1rem;line-height:1}
 </style>
 </head>
 <body>
@@ -110,6 +118,16 @@ select{font:700 .9rem var(--sans);color:var(--ink);background:var(--paper);borde
     </div>
     <div class="figure"><img src="../img/personajes/dani-pensando.webp" alt="" width="185" height="650"></div>
   </header>
+
+  <section class="explain" aria-labelledby="h-que">
+    <h2 id="h-que" data-i18n="x_title">¿Qué es Coast FIRE?</h2>
+    <p class="explain-lead" data-i18n="x_lead"></p>
+    <ol class="steps">
+      <li class="card"><span class="step-n">1</span><h3 data-i18n="x1_h">Número FIRE</h3><p data-i18n="x1_p"></p></li>
+      <li class="card"><span class="step-n">2</span><h3 data-i18n="x2_h">Número Coast</h3><p data-i18n="x2_p"></p></li>
+      <li class="card"><span class="step-n">3</span><h3 data-i18n="x3_h">Y a partir de ahí</h3><p data-i18n="x3_p"></p></li>
+    </ol>
+  </section>
 
   <div class="grid">
     <form class="card rail" id="form" autocomplete="off">
@@ -186,6 +204,11 @@ select{font:700 .9rem var(--sans);color:var(--ink);background:var(--paper);borde
   const T={
   es:{
     eyebrow:"Herramienta",
+    x_title:"¿Qué es Coast FIRE?",
+    x_lead:"FIRE viene del inglés <i>Financial Independence, Retire Early</i>: independencia financiera para poder jubilarte antes. <i>Coast</i> es ir en punto muerto: el momento en que tu dinero llega solo a la meta, aunque no aportes ni un euro más.",
+    x1_h:"Número FIRE",x1_p:"Lo que necesitas invertido para vivir de tus inversiones: tu gasto anual ÷ la tasa de retirada. Con 30.000"+NB+"€ al año y un 3,5"+NB+"%, son 857.143"+NB+"€.",
+    x2_h:"Número Coast",x2_p:"Lo que necesitas tener hoy para que el interés compuesto lo convierta en tu número FIRE el día que te jubiles, sin aportar nada más.",
+    x3_h:"Y a partir de ahí",x3_p:"Ya puedes dejar de ahorrar para la jubilación. Solo tienes que ganar lo justo para cubrir tus gastos hasta entonces.",
     title:'Calculadora <span class="mark">Coast FIRE</span>',doc:"Calculadora Coast FIRE",
     intro:"¿Con cuánto invertido puedes dejar de ahorrar y que el interés compuesto haga el resto hasta tu jubilación? Ese número es tu Coast FIRE. Mete tus datos: la rentabilidad y la inflación van por separado y todo sale en euros de hoy.",
     g_ccy:"Moneda",g_you:"Tú",g_money:"Dinero",g_assump:"Supuestos",
@@ -213,6 +236,11 @@ select{font:700 .9rem var(--sans);color:var(--ink);background:var(--paper);borde
   },
   en:{
     eyebrow:"Tool",
+    x_title:"What is Coast FIRE?",
+    x_lead:"FIRE stands for <i>Financial Independence, Retire Early</i>. <i>Coast</i> is the point where your money reaches that goal on its own, even if you never add another euro.",
+    x1_h:"FIRE number",x1_p:"What you need invested to live off your investments: your annual spending ÷ the withdrawal rate. At 30,000 a year and 3.5%, that's 857,143.",
+    x2_h:"Coast number",x2_p:"What you need today so that compounding turns it into your FIRE number by the day you retire, with no further contributions.",
+    x3_h:"From then on",x3_p:"You can stop saving for retirement. You only need to earn enough to cover your costs until then.",
     title:'Coast <span class="mark">FIRE</span> Calculator',doc:"Coast FIRE Calculator",
     intro:"Find the balance where you can stop saving and let compounding carry you to retirement. Enter your expected return and inflation separately; results are shown in today's money, with future-money figures alongside.",
     g_ccy:"Currency",g_you:"You",g_money:"Money",g_assump:"Assumptions",
