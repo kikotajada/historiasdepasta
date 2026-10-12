@@ -92,22 +92,22 @@ main{display:block}
 .hero-copy h1{margin-bottom:22px}
 .hero-copy .lead{margin-bottom:28px}
 .hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
-.stage{position:relative;height:clamp(250px,34vw,400px);display:flex;align-items:flex-end;justify-content:flex-start;gap:0;padding-right:clamp(120px,14vw,170px)}
+.stage{position:relative;height:clamp(250px,30vw,360px);display:flex;align-items:flex-end;justify-content:flex-start;gap:0;padding-right:clamp(130px,15vw,180px)}
 .stage img{height:100%;width:auto;margin-inline:-6px}
 .stage .h-carmen{height:94.3%} .stage .h-lucia{height:99%}
 .stage-ground{border-top:2px solid var(--ink)}
 .stage-card{position:absolute;top:22%;right:0;padding:12px 16px;text-align:center;transform:rotate(2deg);background:var(--white);border:var(--line) solid var(--ink);border-radius:14px;box-shadow:0 5px 0 var(--ink)}
 .stage-card .k{font-weight:800;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--grey-dark);display:block}
-.stage-card .num{display:block;font-size:1.7rem;line-height:1.05}
-.stage-card .num.gain{font-size:2.3rem}
+.stage-card .num{display:block;font-size:1.6rem;line-height:1.05}
+.stage-card .num + .num{margin-top:2px}
 @media (max-width:820px){
   .hero .wrap{grid-template-columns:minmax(0,1fr)}
   .hero-copy{padding-bottom:0;text-align:center}
   .hero-copy .lead{margin-inline:auto}
   .hero-ctas{justify-content:center}
-  .stage{height:230px;justify-content:center;padding-right:110px}
+  .stage{height:230px;justify-content:center;padding-right:118px}
   .stage-card{padding:8px 10px;right:0;top:18%}
-  .stage-card .num{font-size:1.2rem} .stage-card .num.gain{font-size:1.6rem}
+  .stage-card .num{font-size:1.25rem}
 }
 
 /* Episodes */
@@ -218,3 +218,9 @@ a.ep-card{transition:transform .1s,box-shadow .1s}
 .author p:not(.eyebrow){max-width:62ch}
 @media (max-width:640px){.author{grid-template-columns:minmax(0,1fr);justify-items:center;text-align:center}.author img{width:140px;height:140px}}
 .copy-line a{font-weight:700}
+
+/* Hero: one main action (the calculator) with a one-line explanation */
+.hero-ctas{align-items:center;gap:14px 18px;flex-wrap:nowrap}
+.hero-cta-note{margin:0;flex:1;max-width:32ch;font-size:.92rem;line-height:1.45;color:var(--grey-dark)}
+@media (max-width:820px){.hero-ctas{flex-wrap:wrap}.hero-cta-note{flex:none;max-width:34ch}}
+.btn--yt .logo{width:1.35em;height:1.35em}
