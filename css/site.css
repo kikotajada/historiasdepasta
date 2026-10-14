@@ -224,3 +224,14 @@ a.ep-card{transition:transform .1s,box-shadow .1s}
 .hero-cta-note{margin:0;flex:1;max-width:32ch;font-size:.92rem;line-height:1.45;color:var(--grey-dark)}
 @media (max-width:820px){.hero-ctas{flex-wrap:wrap}.hero-cta-note{flex:none;max-width:34ch}}
 .btn--yt .logo{width:1.35em;height:1.35em}
+
+/* Kit promo banner (home + calculators) */
+.kit-promo{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:20px 36px;align-items:center;overflow:hidden;text-decoration:none;color:var(--ink)}
+.kit-promo .copy{padding:clamp(20px,3.5vw,36px)}
+.kit-promo .copy h2{font-size:clamp(1.8rem,3.6vw,2.6rem);margin:10px 0 12px}
+.kit-promo .copy p{margin:0 0 18px;max-width:46ch}
+.kit-promo .art{align-self:stretch;background:var(--paper);border-left:var(--line) solid var(--ink);display:flex;align-items:center;justify-content:center}
+.kit-promo .art img{width:100%;height:auto;object-fit:contain}
+.kit-promo .tag-new{display:inline-block;background:var(--mustard);border:2px solid var(--ink);border-radius:99px;font-weight:800;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;padding:.35em .9em}
+a.kit-promo:hover .btn{transform:translateY(-1px);box-shadow:0 5px 0 var(--ink)}
+@media (max-width:760px){.kit-promo{grid-template-columns:minmax(0,1fr)}.kit-promo .art{border-left:0;border-top:var(--line) solid var(--ink);order:-1}}
