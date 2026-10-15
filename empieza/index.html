@@ -22,6 +22,7 @@
 <link rel="stylesheet" href="../css/site.css">
 <style>
 .badge{display:inline-block;border:2px solid var(--ink);border-radius:99px;font-weight:800;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;padding:.35em .9em;background:var(--white)}
+.badge--paid{background:var(--mustard)}
 .badge--free{background:var(--gain);color:var(--white)}
 .emp-hero{padding-block:clamp(32px,6vw,64px) 0;border-bottom:2px solid var(--ink)}
 .emp-hero-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:24px;align-items:end}
@@ -47,6 +48,11 @@
 .emp-table>div{display:grid;grid-template-columns:8.5em minmax(0,1fr);gap:12px;padding:10px 14px;border-top:1px solid var(--ink)}
 .emp-table>div:first-child{border-top:0}
 @media (max-width:480px){.emp-table>div{grid-template-columns:minmax(0,1fr);gap:2px}}
+.emp-kit{display:flex;gap:22px;align-items:center;padding:22px;margin-bottom:20px;text-decoration:none;color:var(--ink);background:#FFF7E3}
+.emp-kit img{width:140px;height:auto;flex:none;border-radius:var(--radius-sm);border:var(--line) solid var(--ink)}
+.emp-kit h2{margin:10px 0 8px}
+.emp-kit p{margin:0 0 14px}
+@media (max-width:560px){.emp-kit{flex-direction:column;text-align:center}.emp-kit img{width:120px}}
 .emp-next{display:flex;gap:22px;align-items:center;padding:22px;margin-bottom:24px}
 .emp-next img{width:110px;height:auto;flex:none}
 .emp-next h2{margin:0 0 8px}
@@ -142,6 +148,16 @@
       </ul>
     </li>
   </ol>
+
+  <a class="card emp-kit" href="../primer-ano-invirtiendo/">
+    <img src="../img/inv/kit-square.webp" alt="Guía y calculadora de Tu primer año invirtiendo" width="160" height="160">
+    <div>
+      <span class="badge badge--paid">Kit · 19&nbsp;€</span>
+      <h2>¿Quieres el plan completo?</h2>
+      <p>«Tu primer año invirtiendo»: guía ilustrada de 19 páginas y calculadora para elegir fondos y plataforma, montar tu primera cartera, pagar menos impuestos y saber qué hacer cada mes del primer año.</p>
+      <span class="btn">Ver el kit</span>
+    </div>
+  </a>
 
   <div class="card emp-next">
     <img src="../img/personajes/dani-pensando.webp" alt="" width="160" height="214">
