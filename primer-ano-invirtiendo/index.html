@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tu primer año invirtiendo · Historias de Pasta</title>
+<meta name="description" content="Guía ilustrada + calculadora en Google Sheets para empezar a invertir con un sueldo normal en España: colchón, fondos indexados, dónde abrir la cuenta, impuestos y qué hacer mes a mes.">
+<link rel="canonical" href="https://historiasdepasta.es/primer-ano-invirtiendo/">
+<meta property="og:type" content="product">
+<meta property="og:site_name" content="Historias de Pasta">
+<meta property="og:locale" content="es_ES">
+<meta property="og:title" content="Tu primer año invirtiendo · Historias de Pasta">
+<meta property="og:description" content="Guía ilustrada + calculadora en Google Sheets para empezar a invertir con un sueldo normal en España: colchón, fondos indexados, dónde abrir la cuenta, impuestos y qué hacer mes a mes.">
+<meta property="og:url" content="https://historiasdepasta.es/primer-ano-invirtiendo/">
+<meta property="og:image" content="https://historiasdepasta.es/img/inv/og-inv.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#FAF8F3">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="preload" href="../assets/brand/fonts/anton.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/brand/fonts/montserrat-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/site.css">
+<style>
+/* Tu primer año invirtiendo — product page, on top of css/site.css */
+.kit-hero{padding-block:clamp(36px,6vw,72px) clamp(24px,4vw,48px);border-bottom:2px solid var(--ink)}
+.kit-hero-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:28px 40px;align-items:center}
+.kit-hero h1{margin:18px 0 18px}
+.kit-hero .lead{margin-bottom:26px}
+.kit-hero-img{margin:0}
+.kit-buy{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.kit-btn{font-size:1.05rem;padding:1em 1.4em}
+.kit-btn .num{font-size:1.25rem;line-height:1}
+.kit-note{font-size:.8rem;font-weight:700;color:var(--grey-dark);margin:0}
+@media (max-width:860px){.kit-hero-grid{grid-template-columns:minmax(0,1fr)}.kit-hero-grid>div{text-align:center}.kit-hero .lead{margin-inline:auto}.kit-buy{align-items:center}}
+.kit-section h2{max-width:22ch;margin-bottom:28px}
+.kit-alt{background:var(--white);border-block:2px solid var(--ink)}
+.kit-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.kit-facts .num{display:block;font-size:clamp(2rem,4vw,2.8rem);line-height:1.05;margin-bottom:8px}
+.kit-facts p{margin:0;font-size:.95rem}
+@media (max-width:760px){.kit-facts{grid-template-columns:minmax(0,1fr)}}
+.kit-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+@media (max-width:760px){.kit-two{grid-template-columns:minmax(0,1fr)}}
+.kit-two h3{margin-bottom:8px;font-size:1.2rem}
+.kit-list{margin:14px 0 0;padding-left:1.3em}
+.kit-list li{margin-bottom:.55em}
+.kit-list li::marker{color:var(--mustard);font-weight:800}
+.kit-tabs,.kit-yes,.kit-no{list-style:none;padding-left:0}
+.kit-tabs li{padding-left:1.4em;position:relative}
+.kit-tabs li::before{content:"";position:absolute;left:0;top:.55em;width:.7em;height:.7em;background:var(--mustard);border:2px solid var(--ink);border-radius:3px}
+.kit-yes li,.kit-no li{padding-left:1.8em;position:relative}
+.kit-yes li::before{content:"✓";position:absolute;left:0;font-weight:800;color:var(--gain)}
+.kit-no li::before{content:"✗";position:absolute;left:0;font-weight:800;color:var(--loss)}
+.kit-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.kit-gallery figure{margin:0;overflow:hidden}
+.kit-gallery figcaption{padding:12px 16px;font-weight:800;font-size:.85rem;border-top:var(--line) solid var(--ink)}
+@media (max-width:640px){.kit-gallery{grid-template-columns:minmax(0,1fr)}}
+.kit-faq{max-width:780px}
+.kit-faq details{border:var(--line) solid var(--ink);border-radius:var(--radius-sm);background:var(--white);margin-bottom:12px;box-shadow:0 3px 0 var(--ink)}
+.kit-faq summary{cursor:pointer;font-weight:800;padding:14px 18px;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.kit-faq summary::-webkit-details-marker{display:none}
+.kit-faq summary::after{content:"+";font-family:var(--display);font-size:1.4rem;line-height:1}
+.kit-faq details[open] summary::after{content:"–"}
+.kit-faq details p{padding:0 18px 16px;margin:0}
+.kit-final{border-top:2px solid var(--ink)}
+.kit-final-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1fr);gap:28px 48px;align-items:center}
+.kit-final-grid img{border:var(--line) solid var(--ink);border-radius:var(--radius);box-shadow:var(--drop)}
+.kit-final h2{margin-bottom:16px}
+.kit-final .lead{margin-bottom:24px}
+@media (max-width:760px){.kit-final-grid{grid-template-columns:minmax(0,1fr)}}
+</style>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../" aria-label="Historias de Pasta, inicio">
+      <img src="../img/logo.webp" alt="" width="46" height="46">
+      <span>Historias de <span class="mark">Pasta</span></span>
+    </a>
+    <nav class="nav" aria-label="Principal">
+      <a href="../videos/">Vídeos</a>
+      <a href="../productos/" aria-current="page">Productos</a>
+      <a href="../sobre/">Sobre el canal</a>
+      <div class="social social--header"><a href="https://www.youtube.com/channel/UCrToCbAnFH1Al7mHJjlORAw" rel="noopener" aria-label="YouTube" title="YouTube" target="_blank"><svg class="logo" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="#FF0000" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a><a href="https://www.instagram.com/historias_pasta/" rel="noopener" aria-label="Instagram" title="Instagram" target="_blank"><svg class="logo" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="#FF0069" d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg></a><a href="https://www.tiktok.com/@historias_pasta" rel="noopener" aria-label="TikTok" title="TikTok" target="_blank"><svg class="logo" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="#000000" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a><a href="https://www.facebook.com/profile.php?id=1366206256581346" rel="noopener" aria-label="Facebook" title="Facebook" target="_blank"><svg class="logo" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="#0866FF" d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg></a></div>
+      <a class="btn btn--small btn--yt" href="https://www.youtube.com/channel/UCrToCbAnFH1Al7mHJjlORAw?sub_confirmation=1" rel="noopener" aria-label="Suscríbete en YouTube" target="_blank"><svg class="logo" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="#FF0000" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>Suscríbete</a>
+    </nav>
+  </div>
+</header>
+<main id="contenido">
+
+<section class="kit-hero">
+  <div class="wrap kit-hero-grid">
+    <div>
+      <span class="pill">Nuevo · Guía + calculadora</span>
+      <h1>Tu primer año <span class="mark">invirtiendo</span></h1>
+      <p class="lead">Qué hacer antes de invertir, qué fondos elegir, dónde abrir la cuenta y cómo pagar menos impuestos. Mes a mes, sin humo y para gente con sueldo normal en España.</p>
+      <div class="kit-buy">
+        <a class="btn kit-btn" href="{{STRIPE_LINK}}" data-checkout>Comprar el kit · <span class="num">19&nbsp;€</span></a>
+        <span class="kit-note">Pago único · Descarga al momento · IVA incluido · Pago seguro con Stripe</span>
+      </div>
+    </div>
+    <figure class="kit-hero-img"><img src="../img/inv/kit-wide.webp" alt="La guía en PDF y la calculadora en Google Sheets del kit Tu primer año invirtiendo" width="1400" height="875"></figure>
+  </div>
+</section>
+
+<section class="section kit-section">
+  <div class="wrap">
+    <p class="eyebrow">El problema</p>
+    <h2>Invertir no es difícil. <span class="mark">Equivocarse al empezar, sí.</span></h2>
+    <div class="kit-facts">
+      <div class="card card-pad"><span class="num">337.490&nbsp;€</span><p>puedes tener a los 30 años empezando con 6.000&nbsp;€ y 300&nbsp;€ al mes, al 6&nbsp;% anual. Tú habrás puesto 114.000&nbsp;€.</p></div>
+      <div class="card card-pad"><span class="num loss">−87.000&nbsp;€</span><p>se quedan por el camino con un fondo típico de banco al 1,8&nbsp;% frente a un indexado al 0,2&nbsp;%.</p></div>
+      <div class="card card-pad"><span class="num loss">−100.000&nbsp;€</span><p>te cuesta, en el mismo ejemplo, esperar 5 años para «aprender más» antes de empezar.</p></div>
+    </div>
+    <p class="kit-note" style="margin-top:14px">Ejemplos educativos con rentabilidades supuestas. No garantizan resultados futuros.</p>
+  </div>
+</section>
+
+<section class="section kit-section kit-alt">
+  <div class="wrap">
+    <p class="eyebrow">Qué incluye</p>
+    <h2>Dos piezas que <span class="mark">van juntas</span></h2>
+    <div class="kit-two">
+      <div class="card card-pad">
+        <h3>📘 La guía (PDF, 19 páginas)</h3>
+        <p class="muted">Ilustrada con Dani y María. Cada capítulo termina con lo que hizo Dani (lo que no debes hacer) y lo que hizo María (lo que sí).</p>
+        <ol class="kit-list">
+          <li>Antes de invertir: colchón, deudas y plazo</li>
+          <li>Cómo funciona invertir, sin humo</li>
+          <li>Fondos o ETFs: la ventaja del traspaso</li>
+          <li>Dónde abrir la cuenta: comparativa neutral</li>
+          <li>Tu primera cartera: uno, dos o tres fondos</li>
+          <li>Impuestos sin dolor: base del ahorro y Modelo 720</li>
+          <li>Tu primer año, mes a mes</li>
+          <li>Los 10 errores de Dani</li>
+        </ol>
+      </div>
+      <div class="card card-pad">
+        <h3>📊 La calculadora (Google Sheets)</h3>
+        <p class="muted">Haces una copia en tu Google Drive y metes tus números. También funciona en Excel.</p>
+        <ul class="kit-list kit-tabs">
+          <li><strong>Listo:</strong> colchón, deudas y cuánto puedes invertir de verdad.</li>
+          <li><strong>Interés compuesto:</strong> cuánto puede crecer tu dinero en tres escenarios, también en euros de hoy.</li>
+          <li><strong>Coste de comisiones:</strong> lo que te cuesta un fondo caro frente a uno barato.</li>
+          <li><strong>Mi cartera:</strong> tus porcentajes objetivo y cuánto mover para reequilibrar.</li>
+          <li><strong>Impuestos al vender:</strong> tramos de 2026 y fondo con traspaso frente a ETF.</li>
+          <li><strong>Plan del primer año:</strong> checklist mes a mes.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section kit-section">
+  <div class="wrap">
+    <p class="eyebrow">Por dentro</p>
+    <h2>Así es <span class="mark">la guía</span></h2>
+    <div class="kit-gallery">
+      <figure class="card"><img src="../img/inv/cap2.webp" alt="Ilustración del capítulo 2: María empuja una bola de billetes que crece cuesta arriba" width="800" height="447" loading="lazy"><figcaption>2 · El interés compuesto, sin humo</figcaption></figure>
+      <figure class="card"><img src="../img/inv/cap3.webp" alt="Ilustración del capítulo 3: María traspasa su dinero por una puerta mientras Dani paga en una ventanilla" width="800" height="447" loading="lazy"><figcaption>3 · Fondos o ETFs: la ventaja del traspaso</figcaption></figure>
+      <figure class="card"><img src="../img/inv/cap5.webp" alt="Ilustración del capítulo 5: María con una cesta sencilla y Dani cargado de cajas" width="800" height="447" loading="lazy"><figcaption>5 · Una cartera simple gana a una cartera llena</figcaption></figure>
+      <figure class="card"><img src="../img/inv/cap8.webp" alt="Ilustración del capítulo 8: Dani mira asustado una caída en el móvil" width="800" height="447" loading="lazy"><figcaption>8 · Los 10 errores de Dani</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="section kit-section kit-alt">
+  <div class="wrap kit-two">
+    <div>
+      <p class="eyebrow">Es para ti si…</p>
+      <ul class="kit-list kit-yes">
+        <li>Tienes ahorros parados en el banco y no sabes por dónde empezar.</li>
+        <li>Has oído hablar de fondos indexados pero no te atreves a dar el paso.</li>
+        <li>Quieres invertir poco a poco, cada mes, sin vigilar la bolsa.</li>
+        <li>Te lía la parte de impuestos y no quieres llevarte sustos con Hacienda.</li>
+        <li>Prefieres algo aburrido que funcione a algo emocionante que no.</li>
+      </ul>
+    </div>
+    <div>
+      <p class="eyebrow">No es para ti si…</p>
+      <ul class="kit-list kit-no">
+        <li>Buscas que te digamos qué fondo o qué plataforma contratar. Es educación, no asesoramiento.</li>
+        <li>Quieres hacer trading, cripto o acciones sueltas para ganar rápido.</li>
+        <li>Ya llevas años invirtiendo con una cartera de indexados.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section kit-section">
+  <div class="wrap kit-faq">
+    <p class="eyebrow">Preguntas frecuentes</p>
+    <h2>Antes de <span class="mark">comprar</span></h2>
+    <details><summary>¿Cómo lo recibo?</summary><p>Justo después de pagar llegas a la página de descarga: la guía en PDF, el enlace para copiar la calculadora en tu Google Drive y una versión en Excel. El enlace también aparece en la confirmación de compra.</p></details>
+    <details><summary>¿Cuánto dinero necesito para empezar?</summary><p>Muy poco: en muchos fondos indexados el mínimo es de 1 o 10&nbsp;€, y puedes programar una aportación mensual pequeña. Lo importante es tener antes tu colchón de emergencia, y la guía te enseña a calcularlo.</p></details>
+    <details><summary>¿Necesito saber de Excel?</summary><p>No. Solo cambias las casillas amarillas (tus ahorros, tu aportación, las comisiones) y el resto se calcula solo.</p></details>
+    <details><summary>¿Los datos están actualizados?</summary><p>Sí, a octubre de 2026: tramos de la base del ahorro de 2026, fiscalidad de traspasos y ETFs, y comisiones y mínimos de las plataformas más usadas en España.</p></details>
+    <details><summary>¿Me decís qué fondo o qué plataforma elegir?</summary><p>No. Te enseñamos a comparar comisiones, mínimos y fiscalidad para que decidas tú. No recomendamos fondos, plataformas ni productos concretos, ni cobramos de ninguna.</p></details>
+    <details><summary>¿Y si no me sirve?</summary><p>Escríbenos a kikotajada@gmail.com en los 14 días siguientes a la compra y lo hablamos.</p></details>
+  </div>
+</section>
+
+<section class="section kit-final">
+  <div class="wrap kit-final-grid">
+    <img src="../img/inv/kit-square.webp" alt="" width="900" height="900" loading="lazy">
+    <div>
+      <h2>Empieza bien <span class="mark">desde el primer euro</span></h2>
+      <p class="lead">Por menos de lo que pagas en comisiones en un mes con un fondo caro, sabrás qué hacer con tu dinero durante todo tu primer año.</p>
+      <a class="btn kit-btn" href="{{STRIPE_LINK}}" data-checkout>Comprar el kit · <span class="num">19&nbsp;€</span></a>
+      <p class="kit-note" style="margin-top:12px">Contenido educativo. No es asesoramiento financiero ni fiscal. Invertir implica riesgo de pérdida.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <a class="brand" href="../">
+        <img src="../img/logo.webp" alt="" width="46" height="46" loading="lazy">
+        <span>Historias de <span class="mark">Pasta</span></span>
+      </a>
+      <p class="muted" style="margin:0 0 14px">Educación financiera para España, contada como historias.<br>Nuevo vídeo cada domingo.</p>
+      <div class="social social--footer"><a href="https://www.youtube.com/channel/UCrToCbAnFH1Al7mHJjlORAw" rel="noopener" aria-label="YouTube" title="YouTube" target="_blank"><svg class="logo" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="#FF0000" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a><a href="https://www.instagram.com/historias_pasta/" rel="noopener" aria-label="Instagram" title="Instagram" target="_blank"><svg class="logo" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="#FF0069" d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg></a><a href="https://www.tiktok.com/@historias_pasta" rel="noopener" aria-label="TikTok" title="TikTok" target="_blank"><svg class="logo" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="#000000" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a><a href="https://www.facebook.com/profile.php?id=1366206256581346" rel="noopener" aria-label="Facebook" title="Facebook" target="_blank"><svg class="logo" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="#0866FF" d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg></a></div>
+    </div>
+    <nav aria-label="Pie de página">
+      <a href="../videos/">Vídeos</a>
+      <a href="https://www.youtube.com/channel/UCrToCbAnFH1Al7mHJjlORAw" rel="noopener" target="_blank">YouTube</a>
+      <a href="../calculadora-coast-fire/">Calculadora Coast FIRE</a>
+      <a href="../kit-comprar-piso/">Kit Comprar Piso</a>
+      <a href="../primer-ano-invirtiendo/">Tu primer año invirtiendo</a>
+      <a href="../aviso-legal/">Aviso legal</a>
+      <a href="../sobre/">Sobre el canal</a>
+      <a href="../privacidad/">Privacidad</a>
+    </nav>
+    <p class="disclaimer">Contenido educativo y de entretenimiento. No es asesoramiento financiero. Las rentabilidades pasadas no garantizan rentabilidades futuras e invertir implica riesgo de pérdida.</p>
+    <p class="copy-line">© 2026 Historias de Pasta · Un proyecto de <a href="https://kikotajada.com" rel="noopener" target="_blank">Kiko Tajada</a></p>
+  </div>
+</footer>
+</body>
+</html>
