@@ -1,8 +1,10 @@
 # historiasdepasta.es
 
-Website for the YouTube channel **Historias de Pasta**. Plain static HTML and CSS, served by GitHub Pages. No build step.
+Website for the YouTube channel **Historias de Pasta**. Plain static HTML and CSS, served by **Cloudflare Pages** (production branch `main`). No build step: Cloudflare serves the `public/` folder as-is, plus the small functions in `functions/`.
 
 ## Structure
+
+Everything the public sees lives in `public/`. Paths below are inside it.
 
 | Path | What it is |
 |---|---|
@@ -12,6 +14,7 @@ Website for the YouTube channel **Historias de Pasta**. Plain static HTML and CS
 | `sobre/` | About the channel and the characters |
 | `aviso-legal/`, `privacidad/` | Legal pages |
 | `404.html` | Not-found page |
+| `_headers` | Security and caching headers (Cloudflare) |
 | `css/site.css` | Shared styles. Colours and fonts follow `assets/brand/brand.md` |
 | `img/` | Web-sized WebP copies of the brand images |
 | `assets/brand/` | Original brand files. Source of truth; don't edit or redraw |
@@ -29,20 +32,18 @@ Nothing pending. The contact email (kikotajada@gmail.com) appears in `aviso-lega
 2. Copy an existing card in `videos/index.html` and change the image, title, description and link.
 3. On the home page, move the new video into the big "Último vídeo" card.
 
-## Domain
+## Paid kits and download pages
 
-Settings → Pages: deploy from the `main` branch, root folder, custom domain `historiasdepasta.es`, enforce HTTPS.
+The download links of the paid kits are **not** in `public/`, so nobody can grab them for free. They live in `templates/gracias-<kit>.html`, and `functions/<kit>/gracias.js` serves that page only when the URL has a Stripe Checkout session ID that Stripe confirms as paid (logic in `src/gracias.js`). Anyone else gets a "this page is for buyers" message with the contact email.
 
-DNS at the registrar:
+- Each Stripe Payment Link must redirect after payment to `https://historiasdepasta.es/<kit>/gracias?session_id={CHECKOUT_SESSION_ID}` (exactly like that; Stripe fills in the ID).
+- Cloudflare needs the secret `STRIPE_KEY`: a Stripe restricted key with read access to Checkout Sessions only. Optional `PLINK_<KIT>` variables (e.g. `PLINK_KIT_COMPRAR_PISO = plink_…`) stop one kit's payment from unlocking the other.
+- New kit: copy a template and a function, rename, change the links and text, set its Payment Link redirect as above.
 
-| Type | Name | Value |
-|---|---|---|
-| A | @ | 185.199.108.153 |
-| A | @ | 185.199.109.153 |
-| A | @ | 185.199.110.153 |
-| A | @ | 185.199.111.153 |
-| CNAME | www | kikotajada.github.io |
+## Hosting (Cloudflare Pages)
 
-## If a deploy gets stuck
+Cloudflare Pages project connected to this GitHub repo: framework preset *None*, build command empty, build output directory `public`. Every push to `main` deploys in about a minute; other branches get preview URLs. Unlimited bandwidth on the free plan, commercial use allowed.
 
-Pages deploys show up in the Actions tab as "pages build and deployment" and take 1–2 minutes. If one sits in "queued" for much longer (usually during a GitHub Actions incident, see githubstatus.com), start a fresh one: Settings → Pages, set the branch to None and Save, then back to `main` / root and Save. Merging any change into `main` also starts a new deploy.
+The domain `historiasdepasta.es` uses Cloudflare nameservers and is attached under the project's *Custom domains*, with `www` redirecting to the bare domain.
+
+To test locally: `npx wrangler pages dev public` from the repo root.
