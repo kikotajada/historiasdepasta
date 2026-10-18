@@ -1,4 +1,4 @@
-import { graciasPrimerAnoInvirtiendo as template } from "./_templates.mjs";
+import { graciasPrimerAnoInvirtiendo as template } from "../_templates.mjs";
 import { handleGracias } from "../../src/gracias.js";
 
 export default (request) =>

@@ -1,4 +1,4 @@
-import { graciasKitComprarPiso as template } from "./_templates.mjs";
+import { graciasKitComprarPiso as template } from "../_templates.mjs";
 import { handleGracias } from "../../src/gracias.js";
 
 export default (request) =>
