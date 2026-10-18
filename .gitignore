@@ -1,0 +1,5 @@
+.wrangler/
+.netlify/
+node_modules/
+netlify/functions/_templates.mjs
+.DS_Store

@@ -1,0 +1,16 @@
+# Netlify: static site in public/, plus two functions for the paid-kit download pages.
+[build]
+  publish = "public"
+  # Bundles templates/*.html into a JS module the functions can import (no npm install needed).
+  command = "node scripts/build-templates.mjs"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# www -> bare domain (canonical is https://historiasdepasta.es/)
+[[redirects]]
+  from = "https://www.historiasdepasta.es/*"
+  to = "https://historiasdepasta.es/:splat"
+  status = 301
+  force = true

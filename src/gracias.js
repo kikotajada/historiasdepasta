@@ -6,7 +6,7 @@
 // each Payment Link redirects to
 //   https://historiasdepasta.es/<kit>/gracias?session_id={CHECKOUT_SESSION_ID}
 //
-// Needs one secret in Cloudflare (Settings → Variables and Secrets):
+// Needs one secret in Netlify (Site configuration → Environment variables):
 //   STRIPE_KEY  a restricted key (rk_live_…) with read access to Checkout Sessions.
 // Optional, to make sure a payment for one kit doesn't unlock the other:
 //   PLINK_KIT_COMPRAR_PISO, PLINK_PRIMER_ANO_INVIRTIENDO  the plink_… IDs.
