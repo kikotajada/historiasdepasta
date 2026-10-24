@@ -10,7 +10,7 @@ Everything the public sees lives in `public/`. Paths below are inside it.
 |---|---|
 | `index.html` | Home: hero, latest video, Shorts, calculator teaser, characters |
 | `videos/` | All videos and Shorts |
-| `calculadora-coast-fire/` | Coast FIRE calculator (Spanish by default, English toggle) |
+| `calculadora-libertad-financiera/` | Financial freedom calculator (Spanish by default, English toggle) |
 | `sobre/` | About the channel and the characters |
 | `aviso-legal/`, `privacidad/` | Legal pages |
 | `404.html` | Not-found page |

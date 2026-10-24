@@ -14,3 +14,10 @@
   to = "https://historiasdepasta.es/:splat"
   status = 301
   force = true
+
+# Old calculator URL (already in video descriptions and bios) -> new slug
+[[redirects]]
+  from = "/calculadora-coast-fire/*"
+  to = "/calculadora-libertad-financiera/:splat"
+  status = 301
+  force = true

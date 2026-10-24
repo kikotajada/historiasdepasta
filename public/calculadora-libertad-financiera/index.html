@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Calculadora Coast FIRE · Historias de Pasta</title>
-<meta name="description" content="Calculadora Coast FIRE gratis: descubre con cuánto invertido puedes dejar de ahorrar y aun así jubilarte a tiempo. En euros de hoy.">
-<link rel="canonical" href="https://historiasdepasta.es/calculadora-coast-fire/">
+<title>Calculadora de libertad financiera · Historias de Pasta</title>
+<meta name="description" content="Calculadora de libertad financiera gratis: descubre con cuánto invertido puedes dejar de ahorrar y aun así jubilarte a tiempo. En euros de hoy.">
+<link rel="canonical" href="https://historiasdepasta.es/calculadora-libertad-financiera/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Historias de Pasta">
 <meta property="og:locale" content="es_ES">
-<meta property="og:title" content="Calculadora Coast FIRE · Historias de Pasta">
-<meta property="og:description" content="Calculadora Coast FIRE gratis: descubre con cuánto invertido puedes dejar de ahorrar y aun así jubilarte a tiempo. En euros de hoy.">
-<meta property="og:url" content="https://historiasdepasta.es/calculadora-coast-fire/">
+<meta property="og:title" content="Calculadora de libertad financiera · Historias de Pasta">
+<meta property="og:description" content="Calculadora de libertad financiera gratis: descubre con cuánto invertido puedes dejar de ahorrar y aun así jubilarte a tiempo. En euros de hoy.">
+<meta property="og:url" content="https://historiasdepasta.es/calculadora-libertad-financiera/">
 <meta property="og:image" content="https://historiasdepasta.es/img/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#FAF8F3">
@@ -21,7 +21,7 @@
 <link rel="preload" href="../assets/brand/fonts/montserrat-500.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../css/site.css">
 <style>
-/* Calculator — on top of css/site.css. Ink for the savings path, mustard for the coast line,
+/* Calculator — on top of css/site.css. Ink for the savings path, mustard for the freedom line,
    gain/loss only where money goes up or down. */
 .calc-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px 32px;align-items:end;padding-top:clamp(32px,6vw,64px);margin-bottom:28px}
 .calc-head .figure img{height:clamp(150px,18vw,210px);width:auto}
@@ -115,18 +115,18 @@ select{font:700 .9rem var(--sans);color:var(--ink);background:var(--paper);borde
           <button type="button" id="lang_en" aria-pressed="false">EN</button>
         </div>
       </div>
-      <h1 data-i18n="title">Calculadora <span class="mark">Coast FIRE</span></h1>
+      <h1 data-i18n="title">Calculadora de <span class="mark">libertad financiera</span></h1>
       <p class="lead muted" data-i18n="intro"></p>
     </div>
     <div class="figure"><img src="../img/personajes/dani-pensando.webp" alt="" width="185" height="650"></div>
   </header>
 
   <section class="explain" aria-labelledby="h-que">
-    <h2 id="h-que" data-i18n="x_title">¿Qué es Coast FIRE?</h2>
+    <h2 id="h-que" data-i18n="x_title">¿Qué es la libertad financiera?</h2>
     <p class="explain-lead" data-i18n="x_lead"></p>
     <ol class="steps">
-      <li class="card"><span class="step-n">1</span><h3 data-i18n="x1_h">Número FIRE</h3><p data-i18n="x1_p"></p></li>
-      <li class="card"><span class="step-n">2</span><h3 data-i18n="x2_h">Número Coast</h3><p data-i18n="x2_p"></p></li>
+      <li class="card"><span class="step-n">1</span><h3 data-i18n="x1_h">Objetivo de jubilación</h3><p data-i18n="x1_p"></p></li>
+      <li class="card"><span class="step-n">2</span><h3 data-i18n="x2_h">Número de libertad</h3><p data-i18n="x2_p"></p></li>
       <li class="card"><span class="step-n">3</span><h3 data-i18n="x3_h">Y a partir de ahí</h3><p data-i18n="x3_p"></p></li>
     </ol>
   </section>
@@ -172,9 +172,9 @@ select{font:700 .9rem var(--sans);color:var(--ink);background:var(--paper);borde
       </div>
 
       <div class="stats">
-        <div class="stat"><span class="k" data-i18n="k_fire">Número FIRE</span><span class="v" id="s_fire">—</span><span class="s" id="s_fire_s"></span></div>
-        <div class="stat"><span class="k" data-i18n="k_coast">Número Coast hoy</span><span class="v" id="s_coast">—</span><span class="s" data-i18n="s_coast"></span></div>
-        <div class="stat"><span class="k" data-i18n="k_age">Edad Coast</span><span class="v" id="s_age">—</span><span class="s" data-i18n="s_age"></span></div>
+        <div class="stat"><span class="k" data-i18n="k_fire">Objetivo de jubilación</span><span class="v" id="s_fire">—</span><span class="s" id="s_fire_s"></span></div>
+        <div class="stat"><span class="k" data-i18n="k_coast">Número de libertad hoy</span><span class="v" id="s_coast">—</span><span class="s" data-i18n="s_coast"></span></div>
+        <div class="stat"><span class="k" data-i18n="k_age">Edad de libertad</span><span class="v" id="s_age">—</span><span class="s" data-i18n="s_age"></span></div>
         <div class="stat"><span class="k" data-i18n="k_stop">Si dejas de ahorrar hoy</span><span class="v" id="s_stop">—</span><span class="s" id="s_stop_s"></span></div>
       </div>
 
@@ -218,66 +218,66 @@ select{font:700 .9rem var(--sans);color:var(--ink);background:var(--paper);borde
   const T={
   es:{
     eyebrow:"Herramienta",
-    x_title:"¿Qué es Coast FIRE?",
-    x_lead:"FIRE viene del inglés <i>Financial Independence, Retire Early</i>: independencia financiera para poder jubilarte antes. <i>Coast</i> es ir en punto muerto: el momento en que tu dinero llega solo a la meta, aunque no aportes ni un euro más.",
-    x1_h:"Número FIRE",x1_p:"Lo que necesitas invertido para vivir de tus inversiones: tu gasto anual ÷ la tasa de retirada. Con 30.000"+NB+"€ al año y un 3,5"+NB+"%, son 857.143"+NB+"€.",
-    x2_h:"Número Coast",x2_p:"Lo que necesitas tener hoy para que el interés compuesto lo convierta en tu número FIRE el día que te jubiles, sin aportar nada más.",
+    x_title:"¿Qué es la libertad financiera?",
+    x_lead:"Es el momento en que tu dinero llega solo a tu objetivo de jubilación, aunque no aportes ni un euro más. A partir de ahí, ahorrar para jubilarte deja de ser una obligación.",
+    x1_h:"Objetivo de jubilación",x1_p:"Lo que necesitas invertido para vivir de tus inversiones: tu gasto anual ÷ la tasa de retirada. Con 30.000"+NB+"€ al año y un 3,5"+NB+"%, son 857.143"+NB+"€.",
+    x2_h:"Número de libertad",x2_p:"Lo que necesitas tener hoy para que el interés compuesto lo convierta en tu objetivo de jubilación el día que te jubiles, sin aportar nada más.",
     x3_h:"Y a partir de ahí",x3_p:"Ya puedes dejar de ahorrar para la jubilación. Solo tienes que ganar lo justo para cubrir tus gastos hasta entonces.",
-    title:'Calculadora <span class="mark">Coast FIRE</span>',doc:"Calculadora Coast FIRE",
-    intro:"¿Con cuánto invertido puedes dejar de ahorrar y que el interés compuesto haga el resto hasta tu jubilación? Ese número es tu Coast FIRE. Mete tus datos: la rentabilidad y la inflación van por separado y todo sale en euros de hoy.",
+    title:'Calculadora de <span class="mark">libertad financiera</span>',doc:"Calculadora de libertad financiera",
+    intro:"¿Con cuánto invertido puedes dejar de ahorrar y que el interés compuesto haga el resto hasta tu jubilación? Ese número es tu libertad financiera. Mete tus datos: la rentabilidad y la inflación van por separado y todo sale en euros de hoy.",
     g_ccy:"Moneda",g_you:"Tú",g_money:"Dinero",g_assump:"Supuestos",
     l_age:"Edad actual",l_ret:"Edad de jubilación",u_yrs:"años",u_pa:"%/año",
-    l_bal:"Invertido hoy",l_contrib:"Ahorro mensual",h_contrib:"Sirve para calcular cuándo alcanzas el Coast.",
+    l_bal:"Invertido hoy",l_contrib:"Ahorro mensual",h_contrib:"Sirve para calcular cuándo alcanzas tu libertad financiera.",
     l_spend:"Gasto anual en la jubilación",
     h_spend:"A <b>precios de hoy</b>: lo que cuesta ese estilo de vida ahora. No le sumes la inflación, de eso se encarga el campo de inflación. Descuenta la pensión que esperes cobrar (pública, de empresa, etc.).",
     l_rr:"Rentabilidad de la inversión",h_rr:"Nominal, antes de inflación.",l_inf:"Inflación",l_swr:"Tasa de retirada",
     real:r=>"Rentabilidad real: "+r+NB+"%/año (la que de verdad se capitaliza)",
-    k_fire:"Número FIRE",k_coast:"Número Coast hoy",s_coast:"lo que necesitas ahora para dejar de aportar",k_age:"Edad Coast",s_age:"con tu ahorro mensual",k_stop:"Si dejas de ahorrar hoy",
-    fire_s:(v,y)=>"≈ "+v+" en dinero de "+y,stop_s:(p,a)=>p+NB+"% del número FIRE a los "+a,now:"Ya",
+    k_fire:"Objetivo de jubilación",k_coast:"Número de libertad hoy",s_coast:"lo que necesitas ahora para dejar de aportar",k_age:"Edad de libertad",s_age:"con tu ahorro mensual",k_stop:"Si dejas de ahorrar hoy",
+    fire_s:(v,y)=>"≈ "+v+" en dinero de "+y,stop_s:(p,a)=>p+NB+"% del objetivo a los "+a,now:"Ya",
     c_title:"Trayectoria hasta la jubilación",c_sub:"en dinero de hoy",
-    lg_save:"Ahorrando hasta el Coast, luego sin aportar",lg_stop:"Dejar de ahorrar hoy",lg_line:"Línea Coast",
-    coastAt:a=>"Coast a los "+a,
-    n_how:"<b>Cómo funciona.</b> Rentabilidad real = (1 + rentabilidad) ÷ (1 + inflación) − 1. Número Coast = número FIRE ÷ (1 + rentabilidad real)<sup>años hasta la jubilación</sup>. La línea Coast sube cada año porque quedan menos años para capitalizar. Cuando tu trayectoria de ahorro la cruza, puedes dejar de aportar y aun así llegar a tu número FIRE al jubilarte.",
-    n_money:"<b>Dinero de hoy vs. dinero futuro.</b> Introduce el gasto a precios de hoy. La calculadora capitaliza a la rentabilidad real, así que todas las cifras y el gráfico están en dinero de hoy. La tarjeta FIRE también muestra el mismo objetivo a precios del año de jubilación, como referencia. Si metes un gasto ya inflado, contarías la inflación dos veces.",
+    lg_save:"Ahorrando hasta ser libre, luego sin aportar",lg_stop:"Dejar de ahorrar hoy",lg_line:"Línea de libertad",
+    coastAt:a=>"Libre a los "+a,tgt:"Objetivo",
+    n_how:"<b>Cómo funciona.</b> Rentabilidad real = (1 + rentabilidad) ÷ (1 + inflación) − 1. Número de libertad = objetivo de jubilación ÷ (1 + rentabilidad real)<sup>años hasta la jubilación</sup>. La línea de libertad sube cada año porque quedan menos años para capitalizar. Cuando tu trayectoria de ahorro la cruza, puedes dejar de aportar y aun así llegar a tu objetivo de jubilación.",
+    n_money:"<b>Dinero de hoy vs. dinero futuro.</b> Introduce el gasto a precios de hoy. La calculadora capitaliza a la rentabilidad real, así que todas las cifras y el gráfico están en dinero de hoy. La tarjeta del objetivo también muestra el mismo objetivo a precios del año de jubilación, como referencia. Si metes un gasto ya inflado, contarías la inflación dos veces.",
     n_mind:"<b>Ten en cuenta.</b> Las rentabilidades son medias suavizadas; los mercados de verdad no lo son. Una tasa de retirada del 3–3,5"+NB+"% es una elección conservadora habitual para jubilaciones anticipadas. No tiene en cuenta impuestos. Es una herramienta educativa, no asesoramiento financiero.",
-    p_done:"Coast alcanzado",h_done:"Ya has alcanzado el Coast FIRE.",
+    p_done:"Libertad alcanzada",h_done:"Ya has alcanzado la libertad financiera.",
     d_done:(b,f,a,x)=>"Tus "+b+" crecen hasta "+f+" a los "+a+" años sin ahorrar más, es decir, "+x+" más de lo que necesitas. Todo lo que ahorres a partir de ahora adelanta tu salida.",
     p_way:"En camino",h_way:a=>"Puedes dejar de ahorrar a los "+a+" años.",
-    d_way:(g,c,t,a)=>"Te faltan "+g+" para alcanzar el Coast hoy. Ahorrando "+c+" al mes cierras la brecha en unos "+t+". Después, solo tienes que cubrir tus gastos hasta los "+a+".",
+    d_way:(g,c,t,a)=>"Te faltan "+g+" para alcanzar hoy tu libertad financiera. Ahorrando "+c+" al mes cierras la brecha en unos "+t+". Después, solo tienes que cubrir tus gastos hasta los "+a+".",
     months:n=>n+(n===1?" mes":" meses"),years:n=>n+" años",
-    p_no:"No alcanzado",h_no:a=>"A este ritmo no llegas al Coast antes de los "+a+".",
+    p_no:"No alcanzado",h_no:a=>"A este ritmo no alcanzas la libertad financiera antes de los "+a+".",
     d_no:(p,f)=>"Acabarías con "+p+" frente a un objetivo de "+f+". Prueba a ahorrar más, jubilarte más tarde o reducir el gasto previsto."
   },
   en:{
     eyebrow:"Tool",
-    x_title:"What is Coast FIRE?",
-    x_lead:"FIRE stands for <i>Financial Independence, Retire Early</i>. <i>Coast</i> is the point where your money reaches that goal on its own, even if you never add another euro.",
-    x1_h:"FIRE number",x1_p:"What you need invested to live off your investments: your annual spending ÷ the withdrawal rate. At 30,000 a year and 3.5%, that's 857,143.",
-    x2_h:"Coast number",x2_p:"What you need today so that compounding turns it into your FIRE number by the day you retire, with no further contributions.",
+    x_title:"What is financial freedom?",
+    x_lead:"It's the point where your money reaches your retirement target on its own, even if you never add another euro. From then on, saving for retirement is optional.",
+    x1_h:"Retirement target",x1_p:"What you need invested to live off your investments: your annual spending ÷ the withdrawal rate. At 30,000 a year and 3.5%, that's 857,143.",
+    x2_h:"Freedom number",x2_p:"What you need today so that compounding turns it into your retirement target by the day you retire, with no further contributions.",
     x3_h:"From then on",x3_p:"You can stop saving for retirement. You only need to earn enough to cover your costs until then.",
-    title:'Coast <span class="mark">FIRE</span> Calculator',doc:"Coast FIRE Calculator",
+    title:'Financial <span class="mark">freedom</span> calculator',doc:"Financial freedom calculator",
     intro:"Find the balance where you can stop saving and let compounding carry you to retirement. Enter your expected return and inflation separately; results are shown in today's money, with future-money figures alongside.",
     g_ccy:"Currency",g_you:"You",g_money:"Money",g_assump:"Assumptions",
     l_age:"Current age",l_ret:"Retirement age",u_yrs:"yrs",u_pa:"%/yr",
-    l_bal:"Invested today",l_contrib:"Monthly saving",h_contrib:"Used to find when you hit Coast.",
+    l_bal:"Invested today",l_contrib:"Monthly saving",h_contrib:"Used to find when you reach financial freedom.",
     l_spend:"Annual spending in retirement",
     h_spend:"In <b>today's prices</b>, what this lifestyle costs now. Don't inflate it yourself; the inflation input handles that. Net of any pension income you expect (state, workplace, etc.).",
     l_rr:"Investment return",h_rr:"Nominal, before inflation.",l_inf:"Inflation",l_swr:"Withdrawal rate",
     real:r=>"Real return: "+r+"%/yr (what actually compounds)",
-    k_fire:"FIRE number",k_coast:"Coast number today",s_coast:"needed now to coast",k_age:"Coast age",s_age:"with monthly saving",k_stop:"If you stop today",
-    fire_s:(v,y)=>"≈ "+v+" in "+y+" money",stop_s:(p,a)=>p+"% of FIRE number at "+a,now:"Now",
+    k_fire:"Retirement target",k_coast:"Freedom number today",s_coast:"needed now to stop saving",k_age:"Freedom age",s_age:"with monthly saving",k_stop:"If you stop today",
+    fire_s:(v,y)=>"≈ "+v+" in "+y+" money",stop_s:(p,a)=>p+"% of target at "+a,now:"Now",
     c_title:"Trajectory to retirement",c_sub:"in today's money",
-    lg_save:"Saving until Coast, then coasting",lg_stop:"Stop saving today",lg_line:"Coast line",
-    coastAt:a=>"Coast @ "+a,
-    n_how:"<b>How it works.</b> Real return = (1 + return) ÷ (1 + inflation) − 1. Coast number = FIRE number ÷ (1 + real return)<sup>years to retirement</sup>. The coast line rises each year because fewer years remain to compound. Where your savings path crosses it, you can stop contributing and still reach your FIRE number at retirement.",
-    n_money:"<b>Today's money vs. future money.</b> Enter spending at today's prices. The calculator compounds at the real return, so every figure and the chart stay in today's money. The FIRE tile also shows the same target in retirement-year prices for reference. Entering an already-inflated spending figure would count inflation twice.",
+    lg_save:"Saving until free, then stopping",lg_stop:"Stop saving today",lg_line:"Freedom line",
+    coastAt:a=>"Free @ "+a,tgt:"Target",
+    n_how:"<b>How it works.</b> Real return = (1 + return) ÷ (1 + inflation) − 1. Freedom number = retirement target ÷ (1 + real return)<sup>years to retirement</sup>. The freedom line rises each year because fewer years remain to compound. Where your savings path crosses it, you can stop contributing and still reach your retirement target.",
+    n_money:"<b>Today's money vs. future money.</b> Enter spending at today's prices. The calculator compounds at the real return, so every figure and the chart stay in today's money. The target tile also shows the same target in retirement-year prices for reference. Entering an already-inflated spending figure would count inflation twice.",
     n_mind:"<b>Keep in mind.</b> Returns are smooth averages; real markets are not. A 3–3.5% withdrawal rate is a common conservative choice for early retirees. Taxes are not included. This is an educational tool, not financial advice.",
-    p_done:"Coasted",h_done:"You've already reached Coast FIRE.",
+    p_done:"Free",h_done:"You've already reached financial freedom.",
     d_done:(b,f,a,x)=>"Your "+b+" grows to "+f+" by age "+a+" with no further saving, which is "+x+" more than you need. Any saving from here buys an earlier exit.",
     p_way:"On the way",h_way:a=>"You can stop saving at age "+a+".",
-    d_way:(g,c,t,a)=>"You're "+g+" short of coasting today. Saving "+c+" a month closes the gap in about "+t+"; after that, cover only your living costs until "+a+".",
+    d_way:(g,c,t,a)=>"You're "+g+" short of financial freedom today. Saving "+c+" a month closes the gap in about "+t+"; after that, cover only your living costs until "+a+".",
     months:n=>n+(n===1?" month":" months"),years:n=>n+" years",
-    p_no:"Not reached",h_no:a=>"At this pace you don't reach Coast before "+a+".",
+    p_no:"Not reached",h_no:a=>"At this pace you don't reach financial freedom before "+a+".",
     d_no:(p,f)=>"You'd end up with "+p+" against a target of "+f+". Try saving more, retiring later, or lowering planned spending."
   }};
   const $ = id => document.getElementById(id);
@@ -398,7 +398,7 @@ select{font:700 .9rem var(--sans);color:var(--ink);background:var(--paper);borde
     $("chart").innerHTML=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${t().c_title}">
       ${g}
       <line x1="${L}" x2="${W-R}" y1="${y(fire)}" y2="${y(fire)}" stroke="var(--ink)" stroke-width="1.5" stroke-dasharray="2 4"/>
-      <text x="${W-R}" y="${y(fire)-6}" text-anchor="end" style="fill:var(--ink)">FIRE ${short(fire)}</text>
+      <text x="${W-R}" y="${y(fire)-6}" text-anchor="end" style="fill:var(--ink)">${t().tgt} ${short(fire)}</text>
       <path d="${area}" fill="var(--ink)" opacity=".05"/>
       <path d="${path(stop)}" fill="none" stroke="var(--grey)" stroke-width="2.5" stroke-dasharray="6 5"/>
       <path d="${path(line)}" fill="none" stroke="var(--mustard)" stroke-width="3.5"/>
@@ -426,7 +426,7 @@ select{font:700 .9rem var(--sans);color:var(--ink);background:var(--paper);borde
       <a href="https://historiasdepasta.substack.com" rel="noopener" target="_blank">Newsletter</a>
       <a href="../empieza/">Guía gratis</a>
       <a href="../primer-ano-invirtiendo/">Tu primer año invirtiendo</a>
-      <a href="../calculadora-coast-fire/">Calculadora Coast FIRE</a>
+      <a href="../calculadora-libertad-financiera/">Calculadora de libertad financiera</a>
       <a href="../kit-comprar-piso/">Kit Comprar Piso</a>
       <a href="../productos/">Productos</a>
       <a href="../sobre/">Sobre el canal</a>
