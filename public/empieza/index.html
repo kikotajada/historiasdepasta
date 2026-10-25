@@ -48,6 +48,8 @@
 .emp-table>div{display:grid;grid-template-columns:8.5em minmax(0,1fr);gap:12px;padding:10px 14px;border-top:1px solid var(--ink)}
 .emp-table>div:first-child{border-top:0}
 @media (max-width:480px){.emp-table>div{grid-template-columns:minmax(0,1fr);gap:2px}}
+.emp-nudge{display:block;margin-top:16px;padding:12px 14px;border:2px solid var(--ink);border-radius:var(--radius-sm);background:#FFF7E3;color:var(--ink);text-decoration:none;font-weight:600;font-size:.95rem;line-height:1.45}
+.emp-nudge:hover{background:#FCEBC2}
 .emp-kit{display:flex;gap:22px;align-items:center;padding:22px;margin-bottom:20px;text-decoration:none;color:var(--ink);background:#FFF7E3}
 .emp-kit img{width:140px;height:auto;flex:none;border-radius:var(--radius-sm);border:var(--line) solid var(--ink)}
 .emp-kit h2{margin:10px 0 8px}
@@ -84,7 +86,7 @@
     <div>
       <span class="badge badge--free">Guía gratis · 5 pasos</span>
       <h1>Empieza como Dani</h1>
-      <p class="lead">Cómo invertir tus primeros 200&nbsp;€ al mes desde España, en 5 pasos. Una página, sin jerga y sin venderte nada.</p>
+      <p class="lead">Cómo invertir tus primeros 200&nbsp;€ al mes desde España, en 5 pasos. Una página, sin jerga y gratis.</p>
     </div>
     <img class="emp-hero-img" src="../img/personajes/dani-chulo.webp" alt="Dani, con gafas y sudadera amarilla" width="420" height="560">
   </div>
@@ -128,6 +130,7 @@
         <div role="row"><strong role="cell">Traspasos</strong><span role="cell">¿Ofrece fondos indexados y permite traspasos?</span></div>
         <div role="row"><strong role="cell">Garantía</strong><span role="cell">¿Qué fondo me protege si quiebra? En entidades españolas, hasta 100.000&nbsp;€ (FGD o FOGAIN); en otras de la UE, puede ser solo 20.000&nbsp;€.</span></div>
       </div>
+      <a class="emp-nudge" href="../primer-ano-invirtiendo/?utm_source=web&amp;utm_medium=empieza&amp;utm_campaign=paso3">👉 Este es el paso donde más gente se atasca. En el kit comparamos las plataformas una a una (comisiones, traspasos, fiscalidad) · <s class="was">19&nbsp;€</s> <strong>9&nbsp;€</strong> hasta el 30 nov →</a>
     </li>
     <li class="card">
       <span class="emp-n">4</span>
@@ -150,6 +153,16 @@
     </li>
   </ol>
 
+  <a class="card emp-kit" href="../primer-ano-invirtiendo/">
+    <img src="../img/inv/kit-square.webp?v=9eur" alt="Guía y calculadora de Tu primer año invirtiendo" width="160" height="160">
+    <div>
+      <span class="badge badge--paid">Kit · <s class="was">19&nbsp;€</s> 9&nbsp;€ hasta el 30 nov</span>
+      <h2>¿Quieres el plan completo?</h2>
+      <p>«Tu primer año invirtiendo»: guía ilustrada de 19 páginas y calculadora para elegir fondos y plataforma, montar tu primera cartera, pagar menos impuestos y saber qué hacer cada mes del primer año.</p>
+      <span class="btn">Ver el kit · <s class="was">19&nbsp;€</s> 9&nbsp;€</span>
+    </div>
+  </a>
+
 <div class="card signup" role="region" aria-labelledby="signup-title">
   <p class="eyebrow">Newsletter gratis</p>
   <h2 id="signup-title">Una historia de dinero cada <span class="mark">domingo</span></h2>
@@ -158,15 +171,6 @@
   <p class="signup-small">Puedes darte de baja cuando quieras. ¿No ves el formulario? <a class="link" href="https://historiasdepasta.substack.com/subscribe" rel="noopener" target="_blank">Apúntate en Substack</a>.</p>
 </div>
 
-  <a class="card emp-kit" href="../primer-ano-invirtiendo/">
-    <img src="../img/inv/kit-square.webp?v=9eur" alt="Guía y calculadora de Tu primer año invirtiendo" width="160" height="160">
-    <div>
-      <span class="badge badge--paid">Kit · <s class="was">19&nbsp;€</s> 9&nbsp;€ hasta el 30 nov</span>
-      <h2>¿Quieres el plan completo?</h2>
-      <p>«Tu primer año invirtiendo»: guía ilustrada de 19 páginas y calculadora para elegir fondos y plataforma, montar tu primera cartera, pagar menos impuestos y saber qué hacer cada mes del primer año.</p>
-      <span class="btn">Ver el kit</span>
-    </div>
-  </a>
 
   <div class="card emp-next">
     <img src="../img/personajes/dani-pensando.webp" alt="" width="160" height="214">
