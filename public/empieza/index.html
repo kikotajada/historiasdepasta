@@ -50,6 +50,28 @@
 @media (max-width:480px){.emp-table>div{grid-template-columns:minmax(0,1fr);gap:2px}}
 .emp-nudge{display:block;margin-top:16px;padding:12px 14px;border:2px solid var(--ink);border-radius:var(--radius-sm);background:#FFF7E3;color:var(--ink);text-decoration:none;font-weight:600;font-size:.95rem;line-height:1.45}
 .emp-nudge:hover{background:#FCEBC2}
+.emp-calc{padding:24px;margin-bottom:20px}
+.emp-calc h2{margin:6px 0 6px}
+.emp-calc-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:16px 0}
+.emp-calc-form label{display:grid;gap:6px;font-weight:700;font-size:.9rem}
+.emp-calc-form input{font:600 1.1rem/1.2 var(--sans);padding:10px 12px;border:var(--line) solid var(--ink);border-radius:var(--radius-sm);background:var(--white);width:100%;box-sizing:border-box;min-height:44px}
+.emp-calc-out{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.emp-calc-out>div{border:2px solid var(--ink);border-radius:var(--radius-sm);padding:12px;background:var(--white)}
+.emp-calc-out .num{display:block;font-size:clamp(1.4rem,3.4vw,1.9rem);line-height:1.1;margin-top:4px}
+.emp-calc-out small{display:block;font-size:.8rem;color:#555;line-height:1.35}
+.emp-calc-out .diff{background:#FFF7E3}
+.emp-calc-out .diff .num{color:var(--loss)}
+@media (max-width:620px){.emp-calc-out{grid-template-columns:minmax(0,1fr)}.emp-calc-form{grid-template-columns:minmax(0,1fr)}}
+.emp-peek{padding:24px;margin-bottom:20px}
+.emp-peek h2{margin:6px 0 6px}
+.emp-peek-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:16px 0}
+.emp-peek-grid figure{margin:0;position:relative;border:2px solid var(--ink);border-radius:var(--radius-sm);overflow:hidden;background:var(--white)}
+.emp-peek-grid img{display:block;width:100%;height:auto}
+.emp-peek-grid figcaption{position:absolute;left:8px;right:8px;bottom:8px;background:var(--ink);color:#fff;font-weight:700;font-size:.78rem;line-height:1.3;padding:6px 8px;border-radius:8px;text-align:center}
+.emp-peek ul{margin:0 0 16px;padding-left:1.2em}
+.emp-peek li{margin-bottom:.4em}
+.emp-peek li::marker{color:var(--mustard)}
+@media (max-width:700px){.emp-peek-grid{grid-template-columns:minmax(0,1fr)}}
 .emp-kit{display:flex;gap:22px;align-items:center;padding:22px;margin-bottom:20px;text-decoration:none;color:var(--ink);background:#FFF7E3}
 .emp-kit img{width:140px;height:auto;flex:none;border-radius:var(--radius-sm);border:var(--line) solid var(--ink)}
 .emp-kit h2{margin:10px 0 8px}
@@ -153,15 +175,42 @@
     </li>
   </ol>
 
-  <a class="card emp-kit" href="../primer-ano-invirtiendo/">
-    <img src="../img/inv/kit-square.webp?v=9eur" alt="Guía y calculadora de Tu primer año invirtiendo" width="160" height="160">
-    <div>
-      <span class="badge badge--paid">Kit · <s class="was">19&nbsp;€</s> 9&nbsp;€ hasta el 30 nov</span>
-      <h2>¿Quieres el plan completo?</h2>
-      <p>«Tu primer año invirtiendo»: guía ilustrada de 19 páginas y calculadora para elegir fondos y plataforma, montar tu primera cartera, pagar menos impuestos y saber qué hacer cada mes del primer año.</p>
-      <span class="btn">Ver el kit · <s class="was">19&nbsp;€</s> 9&nbsp;€</span>
+  <section class="card emp-calc" aria-labelledby="calc-title">
+    <span class="badge badge--free">Calculadora rápida</span>
+    <h2 id="calc-title">¿Cuánto te cuestan las <span class="mark">comisiones</span>?</h2>
+    <p>Pon lo que quieres invertir cada mes y durante cuántos años. Comparamos un fondo indexado barato (0,15&nbsp;% al año) con un fondo típico de banco (1,8&nbsp;% al año), con la misma rentabilidad del mercado (7&nbsp;% al año).</p>
+    <form class="emp-calc-form" id="emp-calc" onsubmit="return false">
+      <label>Cada mes (€)<input id="calc-m" type="number" inputmode="numeric" min="10" max="10000" step="10" value="200"></label>
+      <label>Años<input id="calc-y" type="number" inputmode="numeric" min="1" max="50" step="1" value="20"></label>
+    </form>
+    <div class="emp-calc-out" aria-live="polite">
+      <div><small>Fondo indexado (0,15&nbsp;%)</small><span class="num" id="calc-a">102.308&nbsp;€</span></div>
+      <div><small>Fondo de banco (1,8&nbsp;%)</small><span class="num" id="calc-b">84.132&nbsp;€</span></div>
+      <div class="diff"><small>Lo que se queda el banco</small><span class="num" id="calc-d">18.176&nbsp;€</span></div>
     </div>
-  </a>
+    <p class="emp-small muted">Supuestos: aportación a final de mes, 7&nbsp;% anual constante menos el coste de cada fondo, sin impuestos. Es un ejemplo, no una promesa.</p>
+    <p style="margin:12px 0 0">La calculadora del kit va mucho más allá: tus fondos reales, tu cartera con reequilibrio, los impuestos al vender (fondo frente a ETF) y tu plan del primer año. <a class="link" href="../primer-ano-invirtiendo/?utm_source=web&amp;utm_medium=empieza&amp;utm_campaign=calculadora">Ver el kit · 9&nbsp;€</a></p>
+  </section>
+
+  <section class="card emp-peek" aria-labelledby="peek-title">
+    <span class="badge badge--paid">Así es el kit por dentro</span>
+    <h2 id="peek-title">Lo que <span class="mark">no cabe</span> en esta página</h2>
+    <div class="emp-peek-grid">
+      <figure><img src="../img/inv/prev-comparativa.webp" alt="Página de la guía con la comparativa de plataformas: se ven MyInvestor y Openbank, el resto está difuminado" width="880" height="504" loading="lazy"><figcaption>Comparativa de 6 plataformas</figcaption></figure>
+      <figure><img src="../img/inv/prev-carteras.webp" alt="Página de la guía con tres carteras de ejemplo: se ve la primera, el resto está difuminado" width="880" height="504" loading="lazy"><figcaption>3 carteras con sus porcentajes</figcaption></figure>
+      <figure><img src="../img/inv/prev-mes-a-mes.webp" alt="Página de la guía con el plan del primer año: se ve el mes 1, el resto está difuminado" width="880" height="480" loading="lazy"><figcaption>Tu primer año, mes a mes</figcaption></figure>
+    </div>
+    <ul>
+      <li><strong>Guía ilustrada de 19 páginas</strong> en 8 capítulos: del colchón a tu primera cartera, con el ejemplo de María y sus números reales.</li>
+      <li><strong>Dónde abrir la cuenta</strong>: 6 plataformas comparadas (comisiones, mínimos, traspasos, fiscalidad) y cuál encaja con cómo quieres invertir.</li>
+      <li><strong>Impuestos sin dolor</strong>: qué tributa y qué no, y cómo pagar menos con los traspasos.</li>
+      <li><strong>Calculadora en Google Sheets</strong>: interés compuesto, coste de comisiones, tu cartera, impuestos al vender y tu plan del primer año.</li>
+      <li><strong>Los 10 errores de Dani</strong> para que no los cometas tú.</li>
+    </ul>
+    <a class="btn" href="../primer-ano-invirtiendo/?utm_source=web&amp;utm_medium=empieza&amp;utm_campaign=preview">Quiero el kit · <s class="was">19&nbsp;€</s> 9&nbsp;€</a>
+    <p class="emp-small">Precio de lanzamiento hasta el 30 de noviembre. Pago único, descarga al momento.</p>
+  </section>
+
 
 <div class="card signup" role="region" aria-labelledby="signup-title">
   <p class="eyebrow">Newsletter gratis</p>
@@ -214,5 +263,21 @@
     <p class="copy-line">© 2026 Historias de Pasta · Un proyecto de <a href="https://kikotajada.com" rel="noopener" target="_blank">Kiko Tajada</a></p>
   </div>
 </footer>
+<script>
+(function(){
+  var m=document.getElementById('calc-m'), y=document.getElementById('calc-y');
+  if(!m||!y) return;
+  function fv(p,n,rate){var r=rate/12; return r===0? p*n : p*(Math.pow(1+r,n)-1)/r;}
+  function eur(x){return Math.round(x).toLocaleString('es-ES')+'\u00a0€';}
+  function upd(){
+    var p=Math.max(0,Math.min(100000,parseFloat(m.value)||0)), n=Math.round(Math.max(0,Math.min(60,parseFloat(y.value)||0))*12);
+    var a=fv(p,n,0.07-0.0015), b=fv(p,n,0.07-0.018);
+    document.getElementById('calc-a').textContent=eur(a);
+    document.getElementById('calc-b').textContent=eur(b);
+    document.getElementById('calc-d').textContent=eur(a-b);
+  }
+  m.addEventListener('input',upd); y.addEventListener('input',upd); upd();
+})();
+</script>
 </body>
 </html>
