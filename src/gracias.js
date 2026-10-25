@@ -9,7 +9,7 @@
 // Needs one secret in Netlify (Site configuration → Environment variables):
 //   STRIPE_KEY  a restricted key (rk_live_…) with read access to Checkout Sessions.
 // Optional, to make sure a payment for one kit doesn't unlock the other:
-//   PLINK_KIT_COMPRAR_PISO, PLINK_PRIMER_ANO_INVIRTIENDO  the plink_… IDs.
+//   PLINK_KIT_COMPRAR_PISO, PLINK_PRIMER_ANO_INVIRTIENDO  the plink_… IDs (comma-separated if several).
 
 const SESSION_RE = /^cs_(live|test)_[A-Za-z0-9]{10,200}$/;
 
@@ -39,7 +39,8 @@ export async function verifySession(sessionId, env, expectedPlink, fetchImpl = f
   const s = await res.json();
   const paid = s.status === "complete" && (s.payment_status === "paid" || s.payment_status === "no_payment_required");
   if (!paid) return { ok: false, reason: "unpaid" };
-  if (expectedPlink && s.payment_link && s.payment_link !== expectedPlink) return { ok: false, reason: "other-kit" };
+  const allowed = [].concat(expectedPlink || []).filter(Boolean);
+  if (allowed.length && s.payment_link && !allowed.includes(s.payment_link)) return { ok: false, reason: "other-kit" };
   return { ok: true };
 }
 
@@ -63,10 +64,14 @@ function lockedPage(template, kitPath, reason) {
   return template.replace(/<main[\s\S]*?<\/main>/, main);
 }
 
-export async function handleGracias(context, { template, kitPath, expectedPlinkVar }) {
+export async function handleGracias(context, { template, kitPath, expectedPlinkVar, extraPlinks = [] }) {
   const url = new URL(context.request.url);
   const sessionId = url.searchParams.get("session_id");
-  const result = await verifySession(sessionId, context.env, context.env[expectedPlinkVar]);
+  // The env var may hold one plink_… ID or several separated by commas; extraPlinks adds
+  // links created later (e.g. a launch-price link) without touching Netlify settings.
+  const fromEnv = String(context.env[expectedPlinkVar] || "").split(",").map((x) => x.trim()).filter(Boolean);
+  const expected = fromEnv.length ? [...fromEnv, ...extraPlinks] : [];
+  const result = await verifySession(sessionId, context.env, expected);
 
   if (result.ok) return new Response(template, { headers: HEADERS });
   const status = result.reason === "stripe" || result.reason === "config" ? 503 : 403;

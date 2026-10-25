@@ -247,3 +247,7 @@ a.kit-promo:hover .btn{transform:translateY(-1px);box-shadow:0 5px 0 var(--ink)}
 .signup--compact h2{font-size:clamp(1.5rem,3.2vw,2rem)}
 .signup--compact .signup-text{margin-bottom:16px}
 .emp .signup{margin-bottom:20px}
+
+/* Launch price (Tu primer año invirtiendo, hasta 30 nov 2026) */
+.was{text-decoration:line-through;text-decoration-thickness:2px;opacity:.6;font-weight:inherit;margin-right:.15em}
+.kit-launch{display:block;font-weight:700;font-size:.92rem;color:var(--ink,#141414)}
