@@ -21,3 +21,10 @@
   to = "/calculadora-libertad-financiera/:splat"
   status = 301
   force = true
+
+# The course lives on the studio site
+[[redirects]]
+  from = "/curso/*"
+  to = "https://tajadastudios.com/curso/"
+  status = 301
+  force = true
