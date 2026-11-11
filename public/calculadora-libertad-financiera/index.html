@@ -64,6 +64,10 @@ select{font:700 .9rem var(--sans);color:var(--ink);background:var(--paper);borde
 .stat .k{font-size:.72rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--grey-dark)}
 .stat .v{font-family:var(--display);font-size:1.6rem;line-height:1.15;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
 .stat .s{font-size:.75rem;color:var(--grey-dark);line-height:1.4}
+.stat.need{grid-column:1/-1;background:var(--mustard);flex-direction:row;align-items:baseline;flex-wrap:wrap;gap:4px 14px}
+.stat.need .k{color:var(--ink)}
+.stat.need .v{font-size:2rem}
+.stat.need .s{color:var(--ink);flex-basis:100%}
 
 .chart-card{padding:18px 18px 10px;min-width:0}
 .chart-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px 16px;margin-bottom:8px}
@@ -172,6 +176,7 @@ select{font:700 .9rem var(--sans);color:var(--ink);background:var(--paper);borde
       </div>
 
       <div class="stats">
+        <div class="stat need"><span class="k" data-i18n="k_need">Para llegar a tu objetivo</span><span class="v" id="s_need">—</span><span class="s" id="s_need_s"></span></div>
         <div class="stat"><span class="k" data-i18n="k_fire">Objetivo de jubilación</span><span class="v" id="s_fire">—</span><span class="s" id="s_fire_s"></span></div>
         <div class="stat"><span class="k" data-i18n="k_coast">Número de libertad hoy</span><span class="v" id="s_coast">—</span><span class="s" data-i18n="s_coast"></span></div>
         <div class="stat"><span class="k" data-i18n="k_age">Edad de libertad</span><span class="v" id="s_age">—</span><span class="s" data-i18n="s_age"></span></div>
@@ -200,14 +205,15 @@ select{font:700 .9rem var(--sans);color:var(--ink);background:var(--paper);borde
 </div>
 
 <div class="wrap" style="padding-block:clamp(32px,6vw,64px)">
-  <a class="card kit-promo" href="../kit-comprar-piso/">
+  <a class="card kit-promo" href="../primer-ano-invirtiendo/?utm_source=web&amp;utm_medium=calculadora">
     <div class="copy">
-      <span class="tag-new">Kit Comprar Piso</span>
-      <h2>¿Y si tu siguiente paso es <span class="mark">comprar piso</span>?</h2>
-      <p>Haz los números antes de firmar: tu precio máximo real, impuestos de tu comunidad, cuota fija o variable y alquilar vs comprar. Guía + calculadora.</p>
-      <span class="btn">Ver el kit · <span class="num">19&nbsp;€</span></span>
+      <span class="tag-new">Tu primer año invirtiendo</span>
+      <h2>Ya sabes tu número. Ahora, <span class="mark">cómo empezar</span>.</h2>
+      <p>Qué hacer antes de invertir, qué fondos elegir, dónde abrir la cuenta y cómo pagar menos impuestos, mes a mes. Guía + calculadora para tu primer año, pensada para España.</p>
+      <span class="btn">Ver el kit · <s class="was">19&nbsp;€</s> <span class="num">9&nbsp;€</span></span>
+      <p class="muted" style="margin:10px 0 0;font-size:.85rem">Precio de lanzamiento hasta el 30 de noviembre.</p>
     </div>
-    <div class="art"><img src="../img/kit/kit-wide.webp" alt="Guía y calculadora del Kit Comprar Piso" width="1400" height="875" loading="lazy"></div>
+    <div class="art"><img src="../img/inv/kit-wide.webp?v=9eur" alt="La guía en PDF y la calculadora del kit Tu primer año invirtiendo" width="1400" height="875" loading="lazy"></div>
   </a>
 </div>
 </main>
@@ -232,7 +238,8 @@ select{font:700 .9rem var(--sans);color:var(--ink);background:var(--paper);borde
     h_spend:"A <b>precios de hoy</b>: lo que cuesta ese estilo de vida ahora. No le sumes la inflación, de eso se encarga el campo de inflación. Descuenta la pensión que esperes cobrar (pública, de empresa, etc.).",
     l_rr:"Rentabilidad de la inversión",h_rr:"Nominal, antes de inflación.",l_inf:"Inflación",l_swr:"Tasa de retirada",
     real:r=>"Rentabilidad real: "+r+NB+"%/año (la que de verdad se capitaliza)",
-    k_fire:"Objetivo de jubilación",k_coast:"Número de libertad hoy",s_coast:"lo que necesitas ahora para dejar de aportar",k_age:"Edad de libertad",s_age:"con tu ahorro mensual",k_stop:"Si dejas de ahorrar hoy",
+    k_fire:"Objetivo de jubilación",k_coast:"Número de libertad hoy",s_coast:"lo que necesitas ahora para dejar de aportar",k_age:"Edad de libertad",s_age:"con tu ahorro mensual",k_stop:"Si dejas de ahorrar hoy",k_need:"Para llegar a tu objetivo",
+    need_s:(a)=>"al mes, aportando cada mes hasta los "+a+" años (en dinero de hoy)",need_ok:"Ya llegas sin aportar nada más",per_m:"/mes",
     fire_s:(v,y)=>"≈ "+v+" en dinero de "+y,stop_s:(p,a)=>p+NB+"% del objetivo a los "+a,now:"Ya",
     c_title:"Trayectoria hasta la jubilación",c_sub:"en dinero de hoy",
     lg_save:"Ahorrando hasta ser libre, luego sin aportar",lg_stop:"Dejar de ahorrar hoy",lg_line:"Línea de libertad",
@@ -264,7 +271,8 @@ select{font:700 .9rem var(--sans);color:var(--ink);background:var(--paper);borde
     h_spend:"In <b>today's prices</b>, what this lifestyle costs now. Don't inflate it yourself; the inflation input handles that. Net of any pension income you expect (state, workplace, etc.).",
     l_rr:"Investment return",h_rr:"Nominal, before inflation.",l_inf:"Inflation",l_swr:"Withdrawal rate",
     real:r=>"Real return: "+r+"%/yr (what actually compounds)",
-    k_fire:"Retirement target",k_coast:"Freedom number today",s_coast:"needed now to stop saving",k_age:"Freedom age",s_age:"with monthly saving",k_stop:"If you stop today",
+    k_fire:"Retirement target",k_coast:"Freedom number today",s_coast:"needed now to stop saving",k_age:"Freedom age",s_age:"with monthly saving",k_stop:"If you stop today",k_need:"To reach your target",
+    need_s:(a)=>"a month, saving every month until age "+a+" (in today's money)",need_ok:"You get there without saving more",per_m:"/mo",
     fire_s:(v,y)=>"≈ "+v+" in "+y+" money",stop_s:(p,a)=>p+"% of target at "+a,now:"Now",
     c_title:"Trajectory to retirement",c_sub:"in today's money",
     lg_save:"Saving until free, then stopping",lg_stop:"Stop saving today",lg_line:"Freedom line",
@@ -321,6 +329,16 @@ select{font:700 .9rem var(--sans);color:var(--ink);background:var(--paper);borde
     return String(Math.round(v));
   }
   const num=id=>{const v=parseFloat($(id).value);return isFinite(v)?v:0};
+  // Prefill from the URL, e.g. ?edad=30&jubilacion=65&objetivo=500000&invertido=0&inflacion=0 (links from videos and DMs)
+  (function(){
+    let q; try{q=new URLSearchParams(location.search)}catch(e){return}
+    const map={edad:"age",age:"age",jubilacion:"ret",ret:"ret",invertido:"bal",bal:"bal",ahorro:"contrib",contrib:"contrib",
+               gasto:"spend",spend:"spend",rentabilidad:"rr",rr:"rr",inflacion:"inf",inf:"inf",retirada:"swr",swr:"swr"};
+    const set=(id,v)=>{$(id).value=v; const r=$(id+"_r"); if(r) r.value=v};
+    Object.keys(map).forEach(k=>{const v=parseFloat(q.get(k)); if(isFinite(v)) set(map[k],v)});
+    const obj=parseFloat(q.get("objetivo")||q.get("target"));
+    if(isFinite(obj)) set("spend",Math.round(obj*Math.max(0.1,num("swr"))/100));
+  })();
 
   function calc(){
     const L=t();
@@ -347,6 +365,10 @@ select{font:700 .9rem var(--sans);color:var(--ink);background:var(--paper);borde
     $("s_fire").textContent=fmt(fire);
     $("s_fire_s").textContent=L.fire_s(fmt(fire*Math.pow(1+inf,Y)), new Date().getFullYear()+Math.round(Y));
     $("s_coast").textContent=fmt(coastNow);
+    const fvBal=bal*Math.pow(1+m,months);
+    if(fvBal>=fire){$("s_need").textContent=fmt(0)+L.per_m;$("s_need_s").textContent=L.need_ok}
+    else{const need=m>0?(fire-fvBal)*m/(Math.pow(1+m,months)-1):(fire-fvBal)/months;
+      $("s_need").textContent=fmt(need)+L.per_m;$("s_need_s").textContent=L.need_s(ret)}
     $("s_stop").textContent=fmt(stopFinal);
     $("s_stop_s").textContent=L.stop_s(Math.round(stopFinal/fire*100),ret);
 
