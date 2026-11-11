@@ -68,6 +68,28 @@ select{font:700 .9rem var(--sans);color:var(--ink);background:var(--paper);borde
 .stat.need .k{color:var(--ink)}
 .stat.need .v{font-size:2rem}
 .stat.need .s{color:var(--ink);flex-basis:100%}
+/* Phones: answer first, three inputs, the rest folded; the explainer goes to the end (Kiko, 11 nov 2026) */
+.quick{display:none}
+@media (max-width:760px){
+  #contenido{display:flex;flex-direction:column}
+  #contenido > .explain-wrap{order:9;padding-top:32px}
+  .calc-head{padding-top:20px;margin-bottom:14px}
+  .calc-head .lead{display:none}
+  .calc-head h1{font-size:2rem;margin-bottom:0}
+  .quick{display:block;background:var(--mustard);padding:18px 18px 16px;margin-bottom:22px}
+  .q-lead{margin:0;font-weight:700;font-size:.98rem;line-height:1.35}
+  .q-need{margin:2px 0 14px;font-family:var(--display);font-size:3.1rem;line-height:1.05;font-variant-numeric:tabular-nums}
+  .q-per{font-size:1.5rem;margin-left:4px}
+  .q-fields{display:flex;flex-direction:column;gap:10px}
+  .q-f{display:flex;justify-content:space-between;align-items:center;gap:10px;font-weight:700;font-size:.95rem}
+  .q-f .numbox{background:var(--white);width:150px}
+  .q-f .numbox input{font-size:16px}
+  .q-adv{margin-top:14px;width:100%;font:800 .85rem var(--sans);background:var(--white);color:var(--ink);border:2px solid var(--ink);border-radius:99px;padding:10px 14px;cursor:pointer}
+  .grid-wrap #form{display:none}
+  .grid-wrap #form.open{display:flex}
+  .grid-wrap .stat.need{display:none}
+  .numbox input{font-size:16px}
+}
 
 .chart-card{padding:18px 18px 10px;min-width:0}
 .chart-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px 16px;margin-bottom:8px}
@@ -125,6 +147,19 @@ select{font:700 .9rem var(--sans);color:var(--ink);background:var(--paper);borde
     <div class="figure"><img src="../img/personajes/dani-pensando.webp" alt="" width="185" height="650"></div>
   </header>
 
+  <section class="quick card" aria-live="polite">
+    <p class="q-lead" id="q_lead"></p>
+    <p class="q-need"><span id="q_need">—</span><span class="q-per" data-i18n="q_per">/mes</span></p>
+    <div class="q-fields">
+      <label class="q-f"><span data-i18n="l_age">Edad actual</span><span class="numbox"><input id="q_age" type="number" inputmode="numeric" min="16" max="80"><span data-i18n="u_yrs">años</span></span></label>
+      <label class="q-f"><span data-i18n="l_bal">Invertido hoy</span><span class="numbox"><input id="q_bal" type="number" inputmode="numeric" min="0" step="1000"><span class="cc">€</span></span></label>
+      <label class="q-f"><span data-i18n="q_obj">Quiero tener</span><span class="numbox"><input id="q_obj" type="number" inputmode="numeric" min="0" step="10000"><span class="cc">€</span></span></label>
+    </div>
+    <button type="button" class="q-adv" id="q_adv" aria-controls="form" aria-expanded="false" data-i18n="adv_show">Más ajustes (rentabilidad, inflación…)</button>
+  </section>
+</div>
+
+<div class="wrap explain-wrap">
   <section class="explain" aria-labelledby="h-que">
     <h2 id="h-que" data-i18n="x_title">¿Qué es la libertad financiera?</h2>
     <p class="explain-lead" data-i18n="x_lead"></p>
@@ -134,7 +169,9 @@ select{font:700 .9rem var(--sans);color:var(--ink);background:var(--paper);borde
       <li class="card"><span class="step-n">3</span><h3 data-i18n="x3_h">Y a partir de ahí</h3><p data-i18n="x3_p"></p></li>
     </ol>
   </section>
+</div>
 
+<div class="wrap grid-wrap">
   <div class="grid">
     <form class="card rail" id="form" autocomplete="off">
       <div class="field-top">
@@ -238,7 +275,8 @@ select{font:700 .9rem var(--sans);color:var(--ink);background:var(--paper);borde
     h_spend:"A <b>precios de hoy</b>: lo que cuesta ese estilo de vida ahora. No le sumes la inflación, de eso se encarga el campo de inflación. Descuenta la pensión que esperes cobrar (pública, de empresa, etc.).",
     l_rr:"Rentabilidad de la inversión",h_rr:"Nominal, antes de inflación.",l_inf:"Inflación",l_swr:"Tasa de retirada",
     real:r=>"Rentabilidad real: "+r+NB+"%/año (la que de verdad se capitaliza)",
-    k_fire:"Objetivo de jubilación",k_coast:"Número de libertad hoy",s_coast:"lo que necesitas ahora para dejar de aportar",k_age:"Edad de libertad",s_age:"con tu ahorro mensual",k_stop:"Si dejas de ahorrar hoy",k_need:"Para llegar a tu objetivo",
+    k_fire:"Objetivo de jubilación",k_coast:"Número de libertad hoy",s_coast:"lo que necesitas ahora para dejar de aportar",k_age:"Edad de libertad",s_age:"con tu ahorro mensual",k_stop:"Si dejas de ahorrar hoy",k_need:"Para llegar a tu objetivo",q_per:"/mes",q_obj:"Quiero tener",adv_show:"Más ajustes (rentabilidad, inflación…)",adv_hide:"Ocultar ajustes",
+    q_lead:(f,a)=>"Para tener "+f+" a los "+a+" años, invierte cada mes:",q_done:(f,a)=>"Ya llegas a "+f+" a los "+a+" años sin aportar nada más:",
     need_s:(a)=>"al mes, aportando cada mes hasta los "+a+" años (en dinero de hoy)",need_ok:"Ya llegas sin aportar nada más",per_m:"/mes",
     fire_s:(v,y)=>"≈ "+v+" en dinero de "+y,stop_s:(p,a)=>p+NB+"% del objetivo a los "+a,now:"Ya",
     c_title:"Trayectoria hasta la jubilación",c_sub:"en dinero de hoy",
@@ -271,7 +309,8 @@ select{font:700 .9rem var(--sans);color:var(--ink);background:var(--paper);borde
     h_spend:"In <b>today's prices</b>, what this lifestyle costs now. Don't inflate it yourself; the inflation input handles that. Net of any pension income you expect (state, workplace, etc.).",
     l_rr:"Investment return",h_rr:"Nominal, before inflation.",l_inf:"Inflation",l_swr:"Withdrawal rate",
     real:r=>"Real return: "+r+"%/yr (what actually compounds)",
-    k_fire:"Retirement target",k_coast:"Freedom number today",s_coast:"needed now to stop saving",k_age:"Freedom age",s_age:"with monthly saving",k_stop:"If you stop today",k_need:"To reach your target",
+    k_fire:"Retirement target",k_coast:"Freedom number today",s_coast:"needed now to stop saving",k_age:"Freedom age",s_age:"with monthly saving",k_stop:"If you stop today",k_need:"To reach your target",q_per:"/mo",q_obj:"I want to have",adv_show:"More settings (return, inflation…)",adv_hide:"Hide settings",
+    q_lead:(f,a)=>"To have "+f+" by age "+a+", invest every month:",q_done:(f,a)=>"You reach "+f+" by age "+a+" without saving more:",
     need_s:(a)=>"a month, saving every month until age "+a+" (in today's money)",need_ok:"You get there without saving more",per_m:"/mo",
     fire_s:(v,y)=>"≈ "+v+" in "+y+" money",stop_s:(p,a)=>p+"% of target at "+a,now:"Now",
     c_title:"Trajectory to retirement",c_sub:"in today's money",
@@ -329,6 +368,13 @@ select{font:700 .9rem var(--sans);color:var(--ink);background:var(--paper);borde
     return String(Math.round(v));
   }
   const num=id=>{const v=parseFloat($(id).value);return isFinite(v)?v:0};
+  // Quick block (phones): mirrors age, invested today and target; target sets spending = target × withdrawal rate
+  const mirror=(q,id)=>$(q).addEventListener("input",()=>{const v=parseFloat($(q).value); if(!isFinite(v)) return; $(id).value=v; const r=$(id+"_r"); if(r) r.value=v; calc()});
+  mirror("q_age","age"); mirror("q_bal","bal");
+  $("q_obj").addEventListener("input",()=>{const v=parseFloat($("q_obj").value); if(!isFinite(v)) return; $("spend").value=Math.round(v*Math.max(0.1,num("swr"))/100); calc()});
+  $("q_adv").addEventListener("click",()=>{const f=$("form"), open=!f.classList.contains("open"); f.classList.toggle("open",open);
+    $("q_adv").setAttribute("aria-expanded",open); $("q_adv").innerHTML=t()[open?"adv_hide":"adv_show"]; if(open) f.scrollIntoView({behavior:"smooth",block:"start"})});
+
   // Prefill from the URL, e.g. ?edad=30&jubilacion=65&objetivo=500000&invertido=0&inflacion=0 (links from videos and DMs)
   (function(){
     let q; try{q=new URLSearchParams(location.search)}catch(e){return}
@@ -366,9 +412,16 @@ select{font:700 .9rem var(--sans);color:var(--ink);background:var(--paper);borde
     $("s_fire_s").textContent=L.fire_s(fmt(fire*Math.pow(1+inf,Y)), new Date().getFullYear()+Math.round(Y));
     $("s_coast").textContent=fmt(coastNow);
     const fvBal=bal*Math.pow(1+m,months);
+    let needV=0;
     if(fvBal>=fire){$("s_need").textContent=fmt(0)+L.per_m;$("s_need_s").textContent=L.need_ok}
-    else{const need=m>0?(fire-fvBal)*m/(Math.pow(1+m,months)-1):(fire-fvBal)/months;
-      $("s_need").textContent=fmt(need)+L.per_m;$("s_need_s").textContent=L.need_s(ret)}
+    else{needV=m>0?(fire-fvBal)*m/(Math.pow(1+m,months)-1):(fire-fvBal)/months;
+      $("s_need").textContent=fmt(needV)+L.per_m;$("s_need_s").textContent=L.need_s(ret)}
+    $("q_need").textContent=fmt(needV);
+    $("q_lead").textContent=(fvBal>=fire?L.q_done:L.q_lead)(fmt(fire),ret);
+    const qa=document.activeElement;
+    if(qa!==$("q_age")) $("q_age").value=age;
+    if(qa!==$("q_bal")) $("q_bal").value=bal;
+    if(qa!==$("q_obj")) $("q_obj").value=Math.round(fire);
     $("s_stop").textContent=fmt(stopFinal);
     $("s_stop_s").textContent=L.stop_s(Math.round(stopFinal/fire*100),ret);
 
